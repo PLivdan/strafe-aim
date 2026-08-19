@@ -985,3 +985,15 @@ table.matrix td.on { box-shadow: 0 0 0 2px var(--ink); }
 }
 .tocmore-menu a:hover { background: var(--stock-3); color: var(--ink); }
 .tocmore-menu a.active { color: var(--ink); }
+
+/* ── side panels follow the reader ────────────────────────────────────── */
+/* Most plates on this page pair a long prose column with one or two short
+   panels. Left static, the panels sit at the top of a track that runs empty
+   for the rest of the section. Pinned below the nav they ride alongside the
+   paragraph being read instead, and the track never reads as abandoned. A
+   stack taller than the viewport is unaffected: sticky has nowhere to move
+   it. On narrow screens the plate is one column and this must not apply. */
+@media (min-width: 62rem) {
+  .plate > .stack { position: sticky; top: 3.4rem; }
+  .masthead .plate > .stack { position: static; }
+}

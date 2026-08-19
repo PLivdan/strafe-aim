@@ -108,10 +108,15 @@ export function createArena(canvas, opts = {}) {
       const ratio = box.width > 0 ? box.height / box.width : (opts.aspect ?? 0.62);
       const minX = Math.min(s.you.x, s.him.x), maxX = Math.max(s.you.x, s.him.x);
       const minY = Math.min(s.you.y, s.him.y), maxY = Math.max(s.you.y, s.him.y);
-      const want = Math.max(maxX - minX + pad * 4, (maxY - minY + pad * 3) / Math.max(0.2, ratio));
-      view.cx += ((minX + maxX) / 2 - view.cx) * 0.06;
-      view.cy += ((minY + maxY) / 2 - view.cy) * 0.06;
-      view.span += (Math.max(want, opts.minSpan ?? 14) - view.span) * 0.05;
+      // Generous margins, and a fifth of breathing room on top: the players
+      // should never be near an edge, because the edge is where the labels
+      // and the movement arrows live.
+      const want = Math.max(maxX - minX + pad * 6, (maxY - minY + pad * 4) / Math.max(0.2, ratio)) * 1.2;
+      // Quick enough to keep up with a form that travels; the remaining lag
+      // reads as smoothing rather than as the camera losing the fight.
+      view.cx += ((minX + maxX) / 2 - view.cx) * 0.16;
+      view.cy += ((minY + maxY) / 2 - view.cy) * 0.16;
+      view.span += (Math.max(want, opts.minSpan ?? 18) - view.span) * 0.14;
     },
     set(v) { Object.assign(view, v); },
     get view() { return view; },
