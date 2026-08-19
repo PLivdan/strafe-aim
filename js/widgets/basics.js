@@ -14,6 +14,7 @@ import { C, alpha, fitCanvas, MONO, UI } from '../ui/palette.js';
 import { DIRS, DIR, form as makeForm, relativeAcross, viewOffset, directedness, yourVec, hisVec, SPEED } from '../core/forms.js';
 import { probeChange, DEFAULTS } from '../core/sim.js';
 import { predict, advanced, chip } from '../ui/teach.js';
+import { manage, dropCanvas } from '../ui/lifecycle.js';
 
 /* ═══════════════════════════════════════════════════════════ hero ════ */
 /**
@@ -126,6 +127,7 @@ export function reactivityClock(node) {
   );
 
   build();
+  manage(barCanvas, { sharpen: () => {}, release: () => dropCanvas(barCanvas) });
   node.appendChild(el('div.lab',
     el('div.lab-main', mount,
       el('div.scope', el('div.scope-head', el('span', 'The last change of direction, measured'), el('b', 'reactivity')), barCanvas),
@@ -228,6 +230,7 @@ export function readingDemo(node) {
     ),
   ));
 
+  manage(canvas, { sharpen: () => {}, release: () => dropCanvas(canvas) });
   let lastSample = 0, held = 0, heldPrev = 0;
   rafLoop(node, (t) => {
     state.t = t;
@@ -421,6 +424,7 @@ export function directionWheel(node) {
   }
 
   sync();
+  manage(canvas, { sharpen: draw, release: () => dropCanvas(canvas) });
   window.addEventListener('resize', () => draw());
 }
 

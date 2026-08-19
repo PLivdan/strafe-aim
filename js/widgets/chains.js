@@ -13,6 +13,7 @@ import { duelFigure } from '../ui/duelfig.js';
 import { C, alpha, fitCanvas, MONO, UI } from '../ui/palette.js';
 import { DIR, KEYS, form as makeForm, connects, connections, allForms, yourVec, SPEED, FUNDAMENTAL, BLOCKS } from '../core/forms.js';
 import { chip, rulebox } from '../ui/teach.js';
+import { manage, dropCanvas } from '../ui/lifecycle.js';
 
 /* ═══════════════════════════════════════════════ connection map ══════ */
 /**
@@ -149,6 +150,7 @@ export function connectionMap(node) {
     ),
   ));
   render();
+  manage(canvas, { sharpen: () => draw(track(chain)), release: () => dropCanvas(canvas) });
   window.addEventListener('resize', () => draw(track(chain)));
 }
 

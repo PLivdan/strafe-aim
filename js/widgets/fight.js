@@ -7,7 +7,8 @@
  * what happens when both of you are choosing.
  */
 
-import { el, slider, segmented, readout, versus } from '../ui/dom.js';
+import { el, slider, segmented, readout, versus, rafLoop } from '../ui/dom.js';
+import { manage, dropCanvas } from '../ui/lifecycle.js';
 import { duelFigure } from '../ui/duelfig.js';
 import { C, alpha, fitCanvas, MONO, UI } from '../ui/palette.js';
 import { DIR, form as makeForm, FUNDAMENTAL, BLOCKS, allForms, KEYS } from '../core/forms.js';
@@ -72,6 +73,9 @@ export function biasFigure(node) {
     ),
   ));
 
+  // rafLoop parks this the moment the figure leaves the screen. The old
+  // version ran a bare requestAnimationFrame chain, which kept the whole
+  // simulation stepping for as long as the page stayed open.
   let last = performance.now();
   const step = () => {
     const now = performance.now();
@@ -119,9 +123,10 @@ export function biasFigure(node) {
       lo = Math.min(lo, a); hi = Math.max(hi, a);
     }
     rSpan.set(history.length > 60 ? (hi - lo).toFixed(0) : '…', '°');
-    raf = requestAnimationFrame(step);
   };
-  let raf = requestAnimationFrame(step);
+  // The dt clamp inside step() already absorbs the long gap after a pause.
+  rafLoop(canvas, step);
+  manage(canvas, { sharpen: step, release: () => dropCanvas(canvas) });
 }
 
 /* ═══════════════════════════════════════════ whose fight is it ═══════ */
@@ -141,6 +146,7 @@ export function formTrade(node) {
   const rWorst = readout('Worst for you', { swatch: 'red' });
   const status = el('p', { class: 'dim', style: { fontSize: 'var(--step--2)', fontFamily: 'var(--mono)', margin: '0.5rem 0 0' } });
 
+  let lastOut = null;
   function run() {
     status.textContent = 'running eight fights…';
     const out = FUNDAMENTAL.map((id) => {
@@ -159,6 +165,7 @@ export function formTrade(node) {
       }
       return { f, you: you / RUNS, him: him / RUNS };
     });
+    lastOut = out;
     draw(out);
     const sorted = [...out].sort((a, b) => (b.you - b.him) - (a.you - a.him));
     const short = (n) => n.replace('Half-sideways', 'Hsw').replace('Anti-mirroring', 'Anti-mirror');
@@ -233,7 +240,9 @@ export function formTrade(node) {
     ),
   ));
   requestAnimationFrame(() => setTimeout(run, 30));
-  window.addEventListener('resize', () => run());
+  manage(canvas, { sharpen: () => { if (lastOut) draw(lastOut); }, release: () => dropCanvas(canvas) });
+  // A resize keeps the cached results and only repaints them.
+  window.addEventListener('resize', () => { if (lastOut) draw(lastOut); });
 }
 
 /* ══════════════════════════════════════════════════════ the lab ══════ */

@@ -17,6 +17,7 @@ import {
 } from '../core/forms.js';
 import { probeChange, createDuel, steady } from '../core/sim.js';
 import { chip, advanced, rulebox } from '../ui/teach.js';
+import { manage, dropCanvas } from '../ui/lifecycle.js';
 
 /* ═════════════════════════════════════════════════ form explorer ═════ */
 /**
@@ -303,6 +304,7 @@ export function inwardOutward(node) {
     ),
   ));
   draw();
+  manage(canvas, { sharpen: draw, release: () => dropCanvas(canvas) });
   window.addEventListener('resize', draw);
 }
 
@@ -440,5 +442,6 @@ export function staticWeakness(node) {
     el('p.fig-cap', el('b', 'The first two are 180-forms'), ' and they return to the dot they started on, every cycle, for as long as you hold them. The third is a 90-form and it goes somewhere.'),
   ));
   draw();
+  manage(canvas, { sharpen: draw, release: () => dropCanvas(canvas) });
   window.addEventListener('resize', draw);
 }

@@ -18,6 +18,7 @@
 
 import { el, rafLoop, readout } from './dom.js';
 import { povSwap } from './teach.js';
+import { manage, dropCanvas } from './lifecycle.js';
 import { createArena } from './arena.js';
 import { createMonitor, drawMouseTrace } from './monitor.js';
 import { createDuel } from '../core/sim.js';
@@ -152,6 +153,15 @@ export function duelFigure(spec = {}) {
 
   function yawOf(a, b) { return Math.atan2(b.y - a.y, b.x - a.x); }
 
+  // Far from the reader, the canvases give their backing stores back. The
+  // next render call reallocates them through fitCanvas, and the pinned
+  // height keeps the page from shifting while they are gone. The animation
+  // loop is already parked by then; rafLoop pauses well before this fires.
+  const life = manage(node, {
+    sharpen: () => { if (monitor) monitor.clear(); render(); },
+    release: () => { dropCanvas(arenaCanvas); if (monCanvas) dropCanvas(monCanvas); if (traceCanvas) dropCanvas(traceCanvas); },
+  });
+
   return {
     node, sim, arena, monitor, rows, render,
     setForm(id) {
@@ -168,6 +178,6 @@ export function duelFigure(spec = {}) {
     play() { live = true; last = performance.now(); },
     get live() { return live; },
     reset() { sim.reset(); if (monitor) monitor.clear(); },
-    stop() { runner.stop(); },
+    stop() { runner.stop(); life.stop(); },
   };
 }
