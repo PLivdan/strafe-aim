@@ -84,9 +84,9 @@ export function createArena(canvas, opts = {}) {
       ctx.font = MONO(9.5, 500);
       ctx.fillStyle = alpha(C.blueLit, 0.9);
       ctx.textAlign = 'center';
-      ctx.fillText('YOU', X(s.you.x), Y(s.you.y) - scale * 0.85);
+      ctx.fillText('YOU', X(s.you.x), Y(s.you.y) - Math.max(scale * 0.85, 14));
       ctx.fillStyle = alpha(C.redLit, 0.9);
-      ctx.fillText('ENEMY', X(s.him.x), Y(s.him.y) - scale * 0.85);
+      ctx.fillText('ENEMY', X(s.him.x), Y(s.him.y) - Math.max(scale * 0.85, 14));
       ctx.textAlign = 'left';
     }
     if (o.overlay) o.overlay(ctx, { X, Y, scale, w, h });

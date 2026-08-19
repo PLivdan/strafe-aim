@@ -356,7 +356,7 @@ export function compareForms(node) {
         el('td', Math.abs(diff) < 0.04 ? el('span.tag.even', 'even') : el('span', { class: `tag ${diff > 0 ? 'good' : 'bad'}` }, `${diff > 0 ? '+' : ''}${Math.round(diff * 100)}`)),
       ));
     }
-    status.textContent = 'Same dodge, same seed, both players reacting in 200 ms. The trade column is your time on target minus his.';
+    status.textContent = 'Same dodge, same seed, both players reacting in 200 ms. The trade column is your time on target minus theirs.';
   }, 30));
 }
 

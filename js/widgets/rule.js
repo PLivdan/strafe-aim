@@ -27,7 +27,7 @@ export function ruleGame(node) {
   const fig = duelFigure({
     formId, dodge: 'long', seed: 33, params: { range: 16 },
     title: 'You are driving',
-    aspect: 0.42, monitorAspect: 0.4, span: 22,
+    aspect: 0.42, monitorAspect: 0.4, span: 22, pad: 2.4,
     readouts: ['accuracy'],
     onFrame: (s) => { tick(s); },
   });
@@ -134,7 +134,7 @@ const avg = (a) => a.reduce((x, y) => x + y, 0) / a.length;
 export function shortDodge(node) {
   let dodge = 0.18;
   let left = null, right = null;
-  const mount = el('div.lab-scopes');
+  const mount = el('div.stack');
   const rLeft = readout('Chasing them', { swatch: 'blue' });
   const rRight = readout('Sitting in the middle', { swatch: 'orange' });
   const advice = el('p', { class: 'dim', style: { margin: '0.6rem 0 0', fontSize: 'var(--step--1)' } });
@@ -163,22 +163,22 @@ export function shortDodge(node) {
   }
 
   build();
-  node.appendChild(el('div.stack',
-    mount,
-    el('div.lab',
-      el('div.lab-main', el('p.fig-cap', el('b', 'Same enemy, same seed, same second.'), ' The only difference is whether the crosshair is trying to follow them or waiting for them.')),
-      el('div.lab-side',
-        el('div.panel', el('div.panel-head', el('span', 'How fast they reverse')), el('div.panel-body',
-          slider({
-            label: 'They hold each direction for', min: 0.1, max: 0.9, step: 0.02, value: 0.18,
-            format: (v) => `${Math.round(v * 1000)} ms`,
-            hint: 'Under about 250 ms this is what people call short-dodging or ad-spam.',
-            oninput: (v) => { dodge = v; build(); },
-          }),
-          el('div.readouts', { style: { marginTop: '0.7rem' } }, rLeft, rRight),
-          advice,
-        )),
-      ),
+  node.appendChild(el('div.lab',
+    el('div.lab-main',
+      mount,
+      el('p.fig-cap', el('b', 'Same enemy, same seed, same second.'), ' The only difference is whether the crosshair is trying to follow them or waiting for them.'),
+    ),
+    el('div.lab-side',
+      el('div.panel', el('div.panel-head', el('span', 'How fast they reverse')), el('div.panel-body',
+        slider({
+          label: 'They hold each direction for', min: 0.1, max: 0.9, step: 0.02, value: 0.18,
+          format: (v) => `${Math.round(v * 1000)} ms`,
+          hint: 'Under about 250 ms this is what people call short-dodging or ad-spam.',
+          oninput: (v) => { dodge = v; build(); },
+        }),
+        el('div.readouts', { style: { marginTop: '0.7rem' } }, rLeft, rRight),
+        advice,
+      )),
     ),
   ));
 }

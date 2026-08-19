@@ -122,10 +122,19 @@ export function connectionMap(node) {
     ctx.beginPath(); ctx.arc(SX(0, 0), SY(0, 0), 4, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = C.blueLit;
     ctx.beginPath(); ctx.arc(SX(ex, ey), SY(ex, ey), 5, 0, Math.PI * 2); ctx.fill();
-    ctx.font = MONO(9.5, 500); ctx.fillStyle = alpha(C.scopeInk2, 0.85);
-    ctx.fillText('start', SX(0, 0) + 8, SY(0, 0) + 4);
-    ctx.fillStyle = C.blueLit;
-    ctx.fillText('end', SX(ex, ey) + 8, SY(ex, ey) + 4);
+    ctx.font = MONO(9.5, 500);
+    // A closed chain ends where it began, and two labels on one point are
+    // unreadable. Say the interesting thing instead.
+    const closed = Math.hypot(SX(ex, ey) - SX(0, 0), SY(ex, ey) - SY(0, 0)) < 12;
+    if (closed) {
+      ctx.fillStyle = C.blueLit;
+      ctx.fillText('start = end: the chain goes nowhere', SX(0, 0) + 9, SY(0, 0) + 4);
+    } else {
+      ctx.fillStyle = alpha(C.scopeInk2, 0.85);
+      ctx.fillText('start', SX(0, 0) + 8, SY(0, 0) + 4);
+      ctx.fillStyle = C.blueLit;
+      ctx.fillText('end', SX(ex, ey) + 8, SY(ex, ey) + 4);
+    }
   }
 
   node.appendChild(el('div.lab',

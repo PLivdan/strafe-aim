@@ -229,23 +229,25 @@ export function disagreements(node) {
 export function exactNumbers(node) {
   const r2 = Math.SQRT2 / 2;
   const rows = [
-    ['Mirroring', '10 − 10', EXACT.mirror],
-    ['Half-sideways mirroring', '10 − 10cos45°', EXACT.hswMirror],
-    ['Back and forth', '10 − 0', EXACT.backForth],
-    ['Half-sideways anti-mirroring', '10 + 10cos45°', EXACT.hswAnti],
-    ['Anti-mirroring', '10 + 10', EXACT.antiMirror],
+    ['Mirror', '10 − 10', EXACT.mirror],
+    ['Hsw mirror', '10 − 10cos45°', EXACT.hswMirror],
+    ['Back & forth', '10 − 0', EXACT.backForth],
+    ['Hsw anti', '10 + 10cos45°', EXACT.hswAnti],
+    ['Anti-mirror', '10 + 10', EXACT.antiMirror],
   ];
   node.appendChild(el('div.panel',
-    el('div.panel-head', el('span', 'How fast they cross your screen'), el('span', 'their 10 ups, plus or minus yours')),
+    el('div.panel-head', el('span', 'How fast they cross your screen'), el('span', '±10 ups')),
     el('div.panel-body', el('div.scroll-x', el('table.data',
-      el('thead', el('tr', el('th', 'Form'), el('th', 'Across the sight line'), el('th', 'ups'), el('th', 'At 16 units, °/s'), el('th', 'Mousepad at 30 cm/360'))),
+      el('thead', el('tr', el('th', 'Form'), el('th', 'Across'), el('th', 'ups'), el('th', '°/s at 16 u'), el('th', 'cm/s'))),
       el('tbody', rows.map(([name, expr, v]) => el('tr',
         el('td', name),
         el('td', expr),
         el('td', v.toFixed(2)),
         el('td', ((v / 16) * 180 / Math.PI).toFixed(0)),
-        el('td', `${(((v / 16) * 180 / Math.PI) / 360 * 30).toFixed(1)} cm/s`),
+        el('td', (((v / 16) * 180 / Math.PI) / 360 * 30).toFixed(1)),
       ))),
-    ))),
+    )),
+    el('p', { class: 'dim', style: { fontSize: 'var(--step--2)', fontFamily: 'var(--mono)', margin: '0.6rem 0 0' } },
+      'cm/s of mousepad assumes 30 cm per full turn.')),
   ));
 }

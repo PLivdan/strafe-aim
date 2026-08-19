@@ -130,7 +130,7 @@ export function biasFigure(node) {
  * about.
  *
  * Every bar is the same twenty seconds run twice over: your time on target
- * minus his. Give yourself a steadier hand and the fast forms swing your way
+ * minus theirs. Give yourself a steadier hand and the fast forms swing your way
  * while mirroring stays stubbornly level, because a fight where neither mouse
  * has to move is a fight neither of you can win with your mouse.
  */
@@ -165,7 +165,7 @@ export function formTrade(node) {
     rBest.set(`${short(sorted[0].f.name)} +${Math.round((sorted[0].you - sorted[0].him) * 100)}`);
     const last = sorted[sorted.length - 1];
     rWorst.set(`${short(last.f.name)} ${Math.round((last.you - last.him) * 100)}`);
-    status.textContent = 'Bars right of the line are fights you win. Length is time on target, yours minus his.';
+    status.textContent = 'Bars right of the line are fights you win. Length is time on target, yours minus theirs.';
   }
 
   function draw(out) {
