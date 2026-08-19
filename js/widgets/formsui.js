@@ -104,7 +104,7 @@ export function formExplorer(node, opts = {}) {
   select(id);
   node.appendChild(el('div.lab',
     el('div.lab-main', fig.node,
-      el('p.fig-cap', el('b', 'Swap the camera.'), ' A form is a claim about two monitors. The half-sideways mirror that nearly freezes the enemy on your screen is also nearly freezing you on theirs, and the question is always which of you that suits.')),
+      el('p.fig-cap', el('b', 'Swap the camera.'), ' Every form changes the fight for both players. The half-sideways mirror that nearly freezes the enemy on your screen is also nearly freezing you on theirs, and the question is always which of you that suits.')),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Pick a form')), el('div.panel-body', picker)),
       el('div.panel', el('div.panel-head', el('span', 'What you are holding')), el('div.panel-body',
@@ -337,7 +337,7 @@ export function compareForms(node) {
       el('div.panel-head', el('span', 'Eight forms, twenty seconds each'), el('span', 'simulated')),
       el('div.panel-body', el('div.scroll-x', table), status),
     ),
-    el('p.fig-cap', el('b', 'Both players have the same reaction time and the same hands.'), ' Where a row is close to even, the form has made the fight symmetric and you are trading. Where it is lopsided, the form has handed the fight to whoever aims better.'),
+    el('p.fig-cap', el('b', 'Both modeled players have the same reaction time and the same settings.'), ' Rows near even mean the form made the exchange symmetric. Lopsided rows mean one player\u2019s settings mattered more under that form. None of this predicts a real match.'),
   ));
 
   // Run it after paint so a long section does not block the scroll.
@@ -356,7 +356,7 @@ export function compareForms(node) {
         el('td', Math.abs(diff) < 0.04 ? el('span.tag.even', 'even') : el('span', { class: `tag ${diff > 0 ? 'good' : 'bad'}` }, `${diff > 0 ? '+' : ''}${Math.round(diff * 100)}`)),
       ));
     }
-    status.textContent = 'Same dodge, same seed, both players reacting in 200 ms. The trade column is your time on target minus theirs.';
+    status.textContent = 'Same dodge, same seed, both modeled players reacting in 200 ms. The trade column is modeled time on target, yours minus theirs.';
   }, 30));
 }
 
@@ -413,7 +413,7 @@ export function staticWeakness(node) {
       ctx.lineWidth = 2;
       ctx.beginPath();
       pts.forEach(([px, py], k) => {
-        const sx = cx + py * scale, sy = cy - px * scale;   // +x is towards him: draw it up
+        const sx = cx + py * scale, sy = cy - px * scale;   // +x is toward him: draw it up
         k ? ctx.lineTo(sx, sy) : ctx.moveTo(sx, sy);
       });
       ctx.stroke();

@@ -26,7 +26,7 @@ import { chip, rulebox, predict } from '../ui/teach.js';
  */
 export function biasFigure(node) {
   let bias = 0;
-  let style = 'centre';
+  let style = 'center';
   const canvas = el('canvas');
   const rFree = readout('Free hits from the middle', { swatch: 'orange' });
   const rSwept = readout('They have relocated', { unit: '°' });
@@ -54,7 +54,7 @@ export function biasFigure(node) {
     segmented({
       label: 'What you are doing about it', value: style,
       options: [
-        { value: 'centre', label: 'Under-aiming the middle' },
+        { value: 'center', label: 'Under-aiming the middle' },
         { value: 'track', label: 'Tracking them properly' },
       ],
       onchange: (v) => { style = v; reset(); },
@@ -64,7 +64,7 @@ export function biasFigure(node) {
   node.appendChild(el('div.lab',
     el('div.lab-main',
       el('div.scope', el('div.scope-head', el('span', 'Their ground track, from above'), el('b', 'bias')), canvas),
-      el('p.fig-cap', el('b', 'Drag their drift to zero'), ' and watch the orange. A dodge that goes nowhere has a fixed centre, and a fixed centre is a place someone can simply leave a crosshair.'),
+      el('p.fig-cap', el('b', 'Set the drift to zero'), ' and watch how a crosshair can simply wait near the center of the dodge. Then add drift and watch that fixed point stop being useful.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Controls')), el('div.panel-body', controls)),
@@ -165,7 +165,7 @@ export function formTrade(node) {
     rBest.set(`${short(sorted[0].f.name)} +${Math.round((sorted[0].you - sorted[0].him) * 100)}`);
     const last = sorted[sorted.length - 1];
     rWorst.set(`${short(last.f.name)} ${Math.round((last.you - last.him) * 100)}`);
-    status.textContent = 'Bars right of the line are fights you win. Length is time on target, yours minus theirs.';
+    status.textContent = 'Bars to the right show a modeled time-on-target advantage for you; bars to the left favor the opponent. This is not a prediction of who wins a real match.';
   }
 
   function draw(out) {
@@ -198,14 +198,14 @@ export function formTrade(node) {
     });
     ctx.font = MONO(9.5, 500); ctx.fillStyle = alpha(C.scopeInk2, 0.75);
     ctx.textAlign = 'center';
-    ctx.fillText('you lose the trade   ·   you win it', mid, h - 6);
+    ctx.fillText('modeled advantage: theirs   ·   yours', mid, h - 6);
     ctx.textAlign = 'left';
   }
 
   node.appendChild(el('div.lab',
     el('div.lab-main',
       el('div.scope', el('div.scope-head', el('span', 'Same fight, eight ways'), el('b', 'the trade')), canvas),
-      el('p.fig-cap', el('b', 'Give yourself the better hand'), ' and watch which bars move. Mirroring barely twitches: it is the one form that refuses to be about mouse control at all.'),
+      el('p.fig-cap', el('b', 'Change the mouse-control settings'), ' and compare how sensitive each form is to them. In this simplified setup, mirroring changes least, because there is little lateral motion to track.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'The two hands')), el('div.panel-body', el('div.controls',
@@ -224,7 +224,7 @@ export function formTrade(node) {
           label: 'What they do about you', value: hisStyle,
           options: [
             { value: 'track', label: 'Tracks you' },
-            { value: 'centre', label: 'Sits on your middle' },
+            { value: 'center', label: 'Sits on your middle' },
           ],
           onchange: (v) => { hisStyle = v; run(); },
         }),
@@ -321,7 +321,7 @@ export function lab(node) {
   node.appendChild(el('div.lab',
     el('div.lab-main', mount,
       el('div.panel', el('div.panel-head', el('span', 'Form')), el('div.panel-body', pickerRow)),
-      el('p.fig-cap', el('b', 'Nothing here is decided for you.'), ' The two numbers worth watching are the trade and the worst gap per change. A form that improves your gap and leaves the trade level is a form that is doing nothing for you.'),
+      el('p.fig-cap', el('b', 'Everything here is adjustable.'), ' Compare how the relationships change between setups rather than reading any single number as a verdict. A smaller correction is not automatically an advantage if the same movement also makes the enemy\u2019s aim easier.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'The fight')), el('div.panel-body',

@@ -49,7 +49,7 @@ export function hero(node) {
  *
  * The bar under the fight is the last change, measured: the stretch where
  * nothing happened because you had not noticed yet, and the stretch where the
- * mouse was travelling back. You cannot make the first one much shorter. What
+ * mouse was traveling back. You cannot make the first one much shorter. What
  * you move changes the size of the second one, and that is the entire lever
  * this guide is about.
  */
@@ -129,7 +129,7 @@ export function reactivityClock(node) {
   node.appendChild(el('div.lab',
     el('div.lab-main', mount,
       el('div.scope', el('div.scope-head', el('span', 'The last change of direction, measured'), el('b', 'reactivity')), barCanvas),
-      el('p.fig-cap', el('b', 'Read it left to right.'), ' The clock starts when the enemy changes direction. The first block is time you were off them without knowing it. The second is the mouse travelling back. Only the second block responds to what you are pressing.'),
+      el('p.fig-cap', el('b', 'Read it left to right.'), ' The clock starts when the enemy changes direction. The first block is time you were off them without knowing it. The second is the mouse traveling back. Only the second block responds to what you are pressing.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Controls')), el('div.panel-body', controls)),
@@ -175,7 +175,7 @@ function drawBar(canvas, s, params) {
     ctx.textAlign = 'left';
   };
   seg(0, r.reactive, C.yellowLit, 'not noticed yet');
-  seg(r.reactive, r.total, C.orangeLit, 'mouse travelling back');
+  seg(r.reactive, r.total, C.orangeLit, 'mouse traveling back');
   ctx.strokeStyle = alpha(C.greenLit, 0.9);
   ctx.lineWidth = 2;
   ctx.beginPath(); ctx.moveTo(X(r.total), y - 6); ctx.lineTo(X(r.total), y + bh + 6); ctx.stroke();

@@ -45,17 +45,17 @@ test('mirroring ignores mouse control; anti-mirroring leverages it (§2.3)', () 
 test('parking on the middle beats tracking a short dodge, and loses to a long one (§2.2)', () => {
   const still = { onLeft: '-', onRight: '-' };
   const trackShort = run({ form: still, dodge: 'short', params: { range: 14 } });
-  const parkShort = run({ form: still, dodge: 'short', params: { range: 14, aimStyle: 'centre' } });
+  const parkShort = run({ form: still, dodge: 'short', params: { range: 14, aimStyle: 'center' } });
   assert.ok(parkShort.you > trackShort.you + 0.1, `park ${parkShort.you} vs track ${trackShort.you}`);
   const trackLong = run({ form: still, dodge: 'long', params: { range: 14 } });
-  const parkLong = run({ form: still, dodge: 'long', params: { range: 14, aimStyle: 'centre' } });
+  const parkLong = run({ form: still, dodge: 'long', params: { range: 14, aimStyle: 'center' } });
   assert.ok(trackLong.you > parkLong.you + 0.1, `track ${trackLong.you} vs park ${parkLong.you}`);
 });
 
-test('a biased dodge starves the parked crosshair (§5, Sam)', () => {
+test('a drifting dodge reduces the value of a fixed crosshair (§5, Sam)', () => {
   const still = { onLeft: '-', onRight: '-' };
-  const noBias = run({ form: still, dodge: 'short', bias: 0, params: { aimStyle: 'centre' } }, 15);
-  const biased = run({ form: still, dodge: 'short', bias: 0.35, params: { aimStyle: 'centre' } }, 15);
+  const noBias = run({ form: still, dodge: 'short', bias: 0, params: { aimStyle: 'center' } }, 15);
+  const biased = run({ form: still, dodge: 'short', bias: 0.35, params: { aimStyle: 'center' } }, 15);
   assert.ok(noBias.you > biased.you + 0.25, `no-bias ${noBias.you} vs biased ${biased.you}`);
 });
 

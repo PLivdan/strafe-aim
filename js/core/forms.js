@@ -35,7 +35,7 @@ const r2 = Math.SQRT2 / 2;
 
 /**
  * The eight directions, in the frame of whoever presses them. `a` is the
- * angle from that player's own forward, positive towards their left.
+ * angle from that player's own forward, positive toward their left.
  */
 export const DIRS = [
   { key: 'F',  a: 0,    keys: 'W',  label: 'forward',        short: 'fwd' },
@@ -112,7 +112,7 @@ export function closingSpeed(yourKey, hisKey) {
  * Inward-directed or outward-directed, for one change of direction.
  *
  * The guide's test is what your view-angle does relative to the target if you
- * freeze the mouse: drift towards where he is now going and the correction
+ * freeze the mouse: drift toward where he is now going and the correction
  * you owe gets smaller, drift away and it gets larger. Written in components
  * that is simply whether you move across the sight line the same way he now
  * does. Follow him across and the gap closes; go the other way and it opens.
@@ -211,7 +211,7 @@ export const CATALOGUE = {
              note: 'Both halves back away. You cannot repeat it forever, because you eventually leave the fight.' },
   'BL/BR': { name: 'Backward triangle', variant: 'anti-mirroring', family: 'anti-mirroring', tier: 'block' },
   'FR/BR': { name: 'Back-and-forth triangle', variant: 'clockwise, right', family: 'mixed', tier: 'block',
-             note: 'Both halves carry you to the right. Held properly, your path on the ground is a circle around the enemy, and your crosshair stays pointed at its centre.' },
+             note: 'Both halves carry you to the right. Held properly, your path on the ground is a circle around the enemy, and your crosshair stays pointed at its center.' },
   'BR/FR': { name: 'Back-and-forth triangle', variant: 'anticlockwise, right', family: 'mixed', tier: 'block' },
   'FL/BL': { name: 'Back-and-forth triangle', variant: 'anticlockwise, left', family: 'mixed', tier: 'block' },
   'BL/FL': { name: 'Back-and-forth triangle', variant: 'clockwise, left', family: 'mixed', tier: 'block' },

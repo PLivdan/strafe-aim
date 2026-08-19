@@ -58,7 +58,7 @@ export const DEFAULTS = {
   /** Gentle trim applied while tracking, per second. */
   trim: 2.2,
   /**
-   * 'track' follows him. 'centre' does the other thing the guide describes:
+   * 'track' follows him. 'center' does the other thing the guide describes:
    * park the crosshair in the middle of his dodge and take the free hits as
    * he passes through it, which is what you do to someone changing direction
    * faster than anyone can answer.
@@ -75,7 +75,7 @@ export const DEFAULTS = {
    * player's actual crosshair instead, lag and all, which is more literal but
    * introduces a slow outward spiral in an empty plane — every reacquisition
    * leaves the facing a few degrees behind the travel, and a few degrees of
-   * a ten-unit-per-second run adds up. That drift is an artefact of a map
+   * a ten-unit-per-second run adds up. That drift is an artifact of a map
    * with no walls in it, not a fact about strafe aiming, so it is off unless
    * a figure is specifically about it.
    */
@@ -145,7 +145,7 @@ export function makeAim(p) {
       const rateNow = seen === null || before === null ? 0 : wrap(seen - before) / 0.04;
       const errNow = seen === null ? 0 : wrap(yaw - (seen + rateNow * SENSE));
 
-      if (p.aimStyle === 'centre') {
+      if (p.aimStyle === 'center') {
         // The other thing the guide describes: park on the middle of his
         // dodge and let him walk through the crosshair. No belief, no flicks.
         const guess = seen === null ? bearing : seen;
@@ -298,7 +298,7 @@ export function createDuel(spec = {}) {
   }
 
   /**
-   * Move a player's velocity towards the key they are holding.
+   * Move a player's velocity toward the key they are holding.
    *
    * The ramp is carried in the player's own frame rather than the world's,
    * so a held key keeps meaning the same thing as the view turns. Integrated
@@ -307,7 +307,7 @@ export function createDuel(spec = {}) {
    * times the acceleration time, and every figure on the page slowly drifts
    * apart for reasons that have nothing to do with strafe aiming. Ground
    * movement in these games is clamped hard to the wish direction anyway;
-   * this is the same statement, without the artefact.
+   * this is the same statement, without the artifact.
    */
   function drive(pl, key, yaw, dt) {
     const v = key === '-' ? { x: 0, y: 0 } : yourVec(key);

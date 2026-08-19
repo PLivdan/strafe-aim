@@ -73,7 +73,7 @@ export const TERMS = {
   hsw: {
     name: 'half-sideways', plain: 'on a diagonal',
     tip: 'A form built on the diagonals, so only part of your speed runs across the sight line and the rest opens or closes the range.',
-    ask: 'Is my movement across the enemy, or partly towards them?',
+    ask: 'Is my movement across the enemy, or partly toward them?',
   },
   longdodge: {
     name: 'long dodge', plain: 'keep going',

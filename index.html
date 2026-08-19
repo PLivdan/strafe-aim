@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Strafe aiming, a visual guide</title>
-<meta name="description" content="Your keyboard changes the amount of aiming your mouse has to do. A simulated, interactive guide to moving while you aim in a first-person shooter.">
+<meta name="description" content="Your keyboard changes how much work your mouse has to do. An interactive visual guide to movement, tracking, and strafe aiming in first-person shooters.">
 <meta name="color-scheme" content="light">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -63,9 +63,9 @@
 
       <p>The only thing that changed was <strong>your movement</strong>.</p>
 
-      <p style="font-size:var(--step-1); line-height:1.4; margin:1.4rem 0"><strong>Which fight would you rather aim in?</strong></p>
+      <p style="font-size:var(--step-1); line-height:1.4; margin:1.4rem 0"><strong>Which target would you rather track?</strong></p>
 
-      <p class="dim" style="font-size:var(--step--1)">Blue is you, Red is the enemy, everywhere on this page. Orange means your crosshair is on them.</p>
+      <p class="dim" style="font-size:var(--step--1)">Throughout this guide, blue is you and red is the enemy. Orange means your crosshair is on target.</p>
     </div>
 
     <div class="stack">
@@ -95,7 +95,7 @@
 
       <p>Now you have to correct. The farther they moved during that delay, the larger the correction. We will call that distance <strong>the gap</strong>. It appears in yellow throughout this guide.</p>
 
-      <p>The figure runs this over and over, and times it. The bar underneath splits each miss into its two parts: the time before you noticed, and the time your mouse spent travelling back.</p>
+      <p>The figure separates the miss into two moments. First comes the delay before you respond to the reversal. Then comes the correction that brings your crosshair back to the target. Watch how your movement changes the second part even when the reaction delay stays the same.</p>
 
       <p>You cannot remove the delay between seeing a reversal and responding to it. But your movement can change how quickly the gap grows while you are waiting to react. The same reaction delay can leave you with a large correction in one case and almost none in another.</p>
 
@@ -106,8 +106,8 @@
       <div class="panel">
         <div class="panel-head"><span>Where the time goes</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0 0 0.6em"><strong>Noticing</strong> takes most people around 150–250 ms. It is close to fixed. Sleep affects it, keys do not.</p>
-          <p style="font-size:var(--step--1); margin:0" class="dim"><strong>Correcting</strong> takes longer when the gap is bigger. That is the part this guide is about, and it is decided before you ever notice you are missing.</p>
+          <p style="font-size:var(--step--1); margin:0 0 0.6em"><strong>Reaction delay.</strong> There is always some delay between the target reversing and your response beginning. The exact amount varies from player to player and from moment to moment.</p>
+          <p style="font-size:var(--step--1); margin:0" class="dim"><strong>Correction.</strong> Once you respond, you still have to close whatever gap opened during that delay. A larger gap usually means a larger correction. Your movement during the reaction delay already affects how large that correction will be.</p>
         </div>
       </div>
     </div>
@@ -120,7 +120,7 @@
   <div class="wrap">
     <div class="rulebox" style="margin-top:2.5rem">
       <span class="chip rule">Rule</span>
-      <p>You cannot remove reaction delay. You can use movement to control how much correction is waiting for you afterwards.</p>
+      <p>You cannot eliminate reaction delay, but you can use movement to control how much correction is waiting for you when you respond.</p>
     </div>
   </div>
 </section>
@@ -134,7 +134,7 @@
 
       <p style="margin-top:1.4rem">So how does your movement change the gap? Start with the simplest possible case.</p>
 
-      <p>The enemy dodges left and right. You have two options: when they move, travel the same way through the world, or travel the opposite way.</p>
+      <p>The enemy dodges left and right. You have two options: when they move, move in the same world direction, or in the opposite one.</p>
 
       <p class="tryit"><b>Try both.</b> Ignore accuracy for now. Watch only how fast they travel across your screen.</p>
 
@@ -142,14 +142,16 @@
 
       <p>Your feet just changed how much work your mouse had to do. Nothing about the enemy changed at all.</p>
 
-      <p>These two choices have names. Moving with them is called <strong>mirroring</strong>. Confusingly, you press the <em>opposite</em> keys to theirs, because you are facing each other, and that is what makes you travel the same way. Moving against them is called <strong>anti-mirroring</strong>, where you press the <em>same</em> keys they do. This is easy to get backwards because the players are facing each other. The world direction is what matters, not the key.</p>
+      <p>These two choices have names. Moving in the same world direction as the enemy is called <strong>mirroring</strong>. Moving in the opposite world direction is called <strong>anti-mirroring</strong>.</p>
+
+      <p>The keys can feel backwards because you are facing each other. If both players press their own left-strafe key, they move in opposite world directions. Think about where each player is actually moving, not which key they pressed.</p>
     </div>
 
     <div class="stack">
       <div class="panel">
         <div class="panel-head"><span>Why the keys feel backwards</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">You are facing each other, so their left hand points where your right hand points. When they press their left-strafe key and you press yours, you move in opposite world directions. To travel <em>with</em> someone who is facing you, press the key on the other side.</p>
+          <p style="font-size:var(--step--1); margin:0">Because you are facing each other, the same strafe key sends the two players in opposite world directions. To move with an enemy who is facing you, you generally press the opposite-side strafe key.</p>
         </div>
       </div>
     </div>
@@ -167,9 +169,9 @@
       <span class="chip part">Part three</span>
       <h2 class="h-sec">The rule behind strafe aiming</h2>
 
-      <p style="margin-top:1.4rem">In the last figure the simulation was changing direction for you, at exactly the right moments. That timing is the actual skill, and it has a name.</p>
+      <p style="margin-top:1.4rem">In the last example, the timing was handled for you. Your direction changed exactly when the enemy changed theirs. Doing that yourself is the actual skill.</p>
 
-      <p><strong>Strafe aiming</strong> takes the choice you just made one step further: instead of changing direction whenever you feel like it, you respond to the enemy’s changes, all of them and only them.</p>
+      <p><strong>Strafe aiming</strong> takes the choice from the previous section and adds a timing rule: you change direction in response to the enemy’s direction changes rather than reversing on your own schedule.</p>
 
       <div class="rulebox">
         <span class="chip definition">The definition</span>
@@ -177,7 +179,9 @@
         <p class="why">AIMER7, Strafe Aiming 101, §2.2</p>
       </div>
 
-      <p>Notice what the rule constrains: your feet, not your mouse. It says nothing about how to move the crosshair. And it has two halves, which fail in two different ways. Missing one of their changes is the obvious failure. Changing direction on your own initiative is the other. It is not a mistake in itself, and later we will see good reasons to do it, but it is not strafe aiming. If you cannot tell the difference, you cannot practise either one.</p>
+      <p>Notice that the rule describes your movement, not your mouse. It does not tell you how to move the crosshair. It only tells you when your movement direction changes.</p>
+
+      <p>There are two ways to break the rule. You can miss one of the enemy’s reversals, or you can reverse without the enemy reversing first. The second is not necessarily bad movement, and we will see several reasons to do it later, but it is no longer strafe aiming. Keeping those ideas separate makes both easier to practice.</p>
 
       <p class="tryit"><b>Try it.</b> Press ← and → below. Answer every change of theirs, and invent none of your own. It is harder than it sounds, and the score counts the two failures separately.</p>
     </div>
@@ -186,7 +190,7 @@
       <div class="panel">
         <div class="panel-head"><span>What you give up</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">Strafe aiming is a reactive style. You are spending every direction change on your own aim, and none of them on making yourself harder to hit. That is a trade, not a virtue, and the rest of the guide is about when the trade is worth making.</p>
+          <p style="font-size:var(--step--1); margin:0">Strafe aiming uses your direction changes to make your own tracking more manageable. Those same direction changes could instead be used to make yourself harder to hit, or to reposition. That tradeoff matters more than whether a form is theoretically clean.</p>
         </div>
       </div>
     </div>
@@ -199,10 +203,10 @@
   <div class="wrap" style="margin-top:3.5rem">
     <div class="plate-text">
       <h3 class="h-sub">When the rule cannot be followed</h3>
-      <p style="margin-top:0.8rem">There is one target the rule cannot be applied to: someone reversing faster than you can notice. If they change direction every 150 milliseconds and you need 200 to see it, there is no answer you can give in time. No form fixes this.</p>
-      <p>If someone reverses faster than you can respond, stop trying to follow every reversal. Hold near the centre of their pattern and let them cross your crosshair instead. A repeated short dodge becomes predictable because the player keeps returning through the same space.</p>
+      <p style="margin-top:0.8rem">There is one important limit. If the enemy reverses faster than you can respond, you cannot reliably answer every change.</p>
+      <p>When that happens, stop chasing each reversal individually. Hold closer to the center of the pattern and let the target move back through your crosshair. A repeated short dodge becomes easier to anticipate because the player keeps returning through the same space.</p>
       <p>That is also why one fast reversal inside a longer dodge can work so well. Repeating it gives away the pattern; using it once can catch the opponent before they adjust.</p>
-      <p class="tryit"><b>Drag the slider.</b> Somewhere around a quarter of a second the better strategy flips. Where it flips for you depends on your reaction time, not on principle.</p>
+      <p class="tryit"><b>Drag the slider.</b> Somewhere around a quarter of a second the better response changes. The exact crossover depends on the player, the target, and the situation. The slider is there to make the tradeoff visible, not to give you a universal timing threshold.</p>
     </div>
   </div>
 
@@ -226,11 +230,13 @@
 
       <p>Imagine someone running past you at 10 mph. Now start running beside them at 10 mph. Relative to you, they barely move. You could hold a conversation. Turn around and run the other way, and they fly past you.</p>
 
-      <p>Nothing about their speed changed. <strong>Your movement changed their speed relative to you.</strong> Aiming works exactly the same way, because your screen shows the world relative to you.</p>
+      <p>Nothing about their speed changed. <strong>Your movement changed their speed relative to you.</strong> The same relative-motion idea applies to aiming, because your screen shows the world relative to you.</p>
 
-      <p>There is one more piece to it. What matters to your mouse is not their full relative speed, but the part of it that runs <strong>across</strong> your line of sight, the part that slides the target sideways on your screen. Movement <strong>along</strong> the line of sight changes the range instead, which changes how big a sweep the same sideways speed produces: the same speed is a wide, fast sweep up close and a lazy drift at distance.</p>
+      <p>Your mouse does not care about all of that relative motion equally. The important part is the motion that crosses your line of sight, because that is what moves the target sideways <strong>across</strong> your screen.</p>
 
-      <p class="tryit"><b>Try every key.</b> The figure shows both players from above with their movement split into those two parts, and the number at the bottom is the one your mouse cares about. Two keys nearly cancel their motion. Two keys double it. The rest land in between.</p>
+      <p>Movement toward or away from you changes the range instead. That still matters: the same sideways speed covers much more of your screen up close than it does at long range.</p>
+
+      <p class="tryit"><b>Try every direction.</b> Watch how your movement either cancels part of the enemy’s screen motion, adds to it, or lands somewhere between.</p>
     </div>
 
     <div class="stack">
@@ -260,7 +266,7 @@
 
       <p style="margin-top:1.4rem">So far you have moved left and right. But you have more keys than that. What happens if you answer their dodge by moving forward, backward, or on a diagonal?</p>
 
-      <p>A pair of answers is called a <strong>form</strong>: one direction for when they go left, one for when they go right. Mirroring and anti-mirroring are the two you know. The other important ones use the diagonals, and they are worth meeting the same way: by what they feel like, when they help, and what they give up.</p>
+      <p>A pair of answers is called a <strong>form</strong>: one direction for when they go left, one for when they go right. Mirroring and anti-mirroring are the two you know. The other useful forms use diagonals. We will introduce them by what they feel like, when they can help, and what they trade away.</p>
     </div>
     <div class="stack">
       <div class="panel">
@@ -273,7 +279,7 @@
             <div class="readout"><span class="lbl">Half-sideways anti-mirroring</span><span class="val">fast</span></div>
             <div class="readout"><span class="lbl">Anti-mirroring</span><span class="val">fastest</span></div>
           </div>
-          <p style="font-size:var(--step--1); margin:0.7rem 0 0" class="dim">If both players move at 10 units per second, these come out as 0, 2.93, 10, 17.07 and 20 across your screen. The numbers confirm the feel; you do not need them to play.</p>
+          <p style="font-size:var(--step--1); margin:0.7rem 0 0" class="dim">If both players move at 10 units per second, these come out as 0, 2.93, 10, 17.07 and 20 across your screen. The exact values are included for reference. You do not need to memorize them to use the idea.</p>
         </div>
       </div>
     </div>
@@ -286,46 +292,46 @@
         <div class="panel-body">
           <p style="font-size:var(--step--1)"><strong>What it feels like.</strong> The enemy nearly freezes on your screen. Neither of you has to move the mouse except at their direction changes.</p>
           <p style="font-size:var(--step--1)"><strong>Use it when</strong> you are happy to trade hits: more health, more damage per second, a teammate on the way.</p>
-          <p style="font-size:var(--step--1); margin-bottom:0"><strong>Cost.</strong> It freezes you on their screen too. If your mouse control is better than theirs, mirroring throws that advantage away.</p>
+          <p style="font-size:var(--step--1); margin-bottom:0"><strong>Cost.</strong> It freezes you on their screen too. Because mirroring reduces the amount of lateral tracking for both players, it can reduce the value of having better raw tracking than the opponent.</p>
         </div>
       </div>
       <div class="panel">
         <div class="panel-head"><span>Anti-mirroring</span><span class="tag bad">fastest</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1)"><strong>What it feels like.</strong> The enemy races across your screen at twice their own speed, and your mouse is always moving.</p>
-          <p style="font-size:var(--step--1)"><strong>Use it when</strong> you trust your high-speed tracking more than theirs, since it forces both players to use it constantly.</p>
+          <p style="font-size:var(--step--1)"><strong>What it feels like.</strong> In the simple left-right case, your movement and theirs add together, so the target crosses your screen much faster. Your mouse has to keep moving instead of settling.</p>
+          <p style="font-size:var(--step--1)"><strong>Use it when</strong> you are comfortable turning the duel into a faster tracking test.</p>
           <p style="font-size:var(--step--1); margin-bottom:0"><strong>Cost.</strong> Both players have to aim hard. Being smooth and precise at this speed is genuinely difficult, especially up close.</p>
         </div>
       </div>
       <div class="panel">
         <div class="panel-head"><span>Half-sideways mirroring</span><span class="tag good">slow</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1)"><strong>What it feels like.</strong> Mirroring on a diagonal. The target is <em>almost</em> motionless. That sounds easy. It is the hardest form to aim with, because tiny speeds demand real precision and the range keeps changing.</p>
-          <p style="font-size:var(--step--1)"><strong>Use it when</strong> you need precision at long range, where it cancels most of their apparent motion, or when your fine control is your strength.</p>
+          <p style="font-size:var(--step--1)"><strong>What it feels like.</strong> Mirroring on a diagonal. The target can look almost stationary, but that does not necessarily make the shot effortless. Very slow motion exposes small precision errors, while the changing range keeps altering the mouse speed you need.</p>
+          <p style="font-size:var(--step--1)"><strong>Use it when</strong> you want to reduce lateral screen speed while still changing range, especially when fine control is a strength.</p>
           <p style="font-size:var(--step--1); margin-bottom:0"><strong>Cost.</strong> Heavy on precision for both players. On a diagonal you also cover ground more slowly than their straight dodge, so you are a little easier to read than they are.</p>
         </div>
       </div>
       <div class="panel">
         <div class="panel-head"><span>Half-sideways anti-mirroring</span><span class="tag bad">fast</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1)"><strong>What it feels like.</strong> Anti-mirroring on a diagonal: fast, and the speed keeps changing as the range opens and closes.</p>
-          <p style="font-size:var(--step--1)"><strong>Use it when</strong> you want anti-mirroring’s constant pressure but need to handle height or close distance at the same time. Moving in two dimensions also makes you harder to hit from above.</p>
-          <p style="font-size:var(--step--1); margin-bottom:0"><strong>Cost.</strong> Harder to read than plain anti-mirroring, and most players are not smooth enough to track diagonals well. That cuts both ways.</p>
+          <p style="font-size:var(--step--1)"><strong>What it feels like.</strong> Fast lateral motion with a changing range, so the mouse speed you need is less constant than in a plain anti-mirror.</p>
+          <p style="font-size:var(--step--1)"><strong>Use it when</strong> you want a fast tracking duel while also closing or opening distance.</p>
+          <p style="font-size:var(--step--1); margin-bottom:0"><strong>Cost.</strong> The changing range makes the target’s screen speed less consistent, which can make the pattern harder to read for both players.</p>
         </div>
       </div>
       <div class="panel">
         <div class="panel-head"><span>Back and forth</span><span class="tag mixed">their own speed</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1)"><strong>What it feels like.</strong> You move only towards and away from them. Sideways, it is almost the same as standing still.</p>
-          <p style="font-size:var(--step--1)"><strong>Use it when</strong> you are safe behind a shield or out of range and want the steadiest possible platform for precise corrections. Also sidesteps people attacking from your flank.</p>
-          <p style="font-size:var(--step--1); margin-bottom:0"><strong>Cost.</strong> You are nearly a stationary target. Not worth training for its own sake.</p>
+          <p style="font-size:var(--step--1)"><strong>What it feels like.</strong> You move toward and away from the enemy rather than strafing across them. From a purely lateral-tracking perspective, it can look similar to standing still.</p>
+          <p style="font-size:var(--step--1)"><strong>Use it when</strong> you have another reason to change range while keeping lateral mouse movement small, such as being safe behind a shield or out of range.</p>
+          <p style="font-size:var(--step--1); margin-bottom:0"><strong>Cost.</strong> You give the opponent very little lateral movement to track, so this is usually a situational tool rather than a pattern to prioritize on its own.</p>
         </div>
       </div>
       <div class="panel">
         <div class="panel-head"><span>And the rest</span></div>
         <div class="panel-body">
           <p style="font-size:var(--step--1)">Count the possibilities: eight directions you might be moving in when they turn, and seven you could switch to. That makes <strong>56 possible response pairs</strong>. The five families above are the ones with exact opposites. The rest combine them, and a handful are genuinely useful.</p>
-          <p style="font-size:var(--step--1); margin-bottom:0" class="dim">They are catalogued in <a href="#deeper">Going deeper</a>. You do not need them yet.</p>
+          <p style="font-size:var(--step--1); margin-bottom:0" class="dim">They are cataloged in <a href="#deeper">Going deeper</a>. You do not need them yet.</p>
         </div>
       </div>
     </div>
@@ -346,15 +352,15 @@
       <span class="chip part">Part six</span>
       <h2 class="h-sec">What happens when they reverse?</h2>
 
-      <p style="margin-top:1.4rem">Back to the gap. The enemy changes direction, and you have not reacted yet, so for the next fifth of a second your feet keep doing whatever they were doing.</p>
+      <p style="margin-top:1.4rem">Back to the gap. The enemy changes direction, and you have not reacted yet, so for a brief moment your feet keep doing whatever they were doing.</p>
 
       <p>During that instant, one of two things happens. Your movement can help close the mistake, or it can make the mistake larger.</p>
 
-      <p>If your current direction carries you the same way they are now going, the world does part of your correction for you: they stay closer to where your crosshair already points. If it carries you the other way, every one of those milliseconds is adding to the correction you owe.</p>
+      <p>If your current direction carries you the same way they are now going, your own movement partially cancels the target’s new motion on your screen, so they stay closer to where your crosshair already points. If it carries you the other way, every one of those milliseconds adds to the correction.</p>
 
       <p>The figure runs that experiment for all eight keys at once. They reverse, you hold one key for one reaction time, nobody touches the mouse, and the bar is how far off them you end up. The dashed line is what standing still would have cost. Anything under it helped, anything over it hurt.</p>
 
-      <p>The original guide gives the two cases names: a change of direction that shrinks the coming correction is <strong>inward</strong>, one that grows it is <strong>outward</strong>. Every form you met in Part five is one or the other: mirroring and half-sideways mirroring are inward, both anti-mirrors are outward, and back-and-forth is one of each.</p>
+      <p>The original guide names these two cases. A direction change that reduces the coming correction is called <strong>inward</strong>; one that increases it is called <strong>outward</strong>. Every form you met in Part five is one or the other: mirroring and half-sideways mirroring are inward, both anti-mirrors are outward, and back-and-forth is one of each.</p>
 
       <p class="tryit"><b>Slow your reaction time down</b> and watch the bars stretch. The slower you notice, the more your choice of key matters.</p>
     </div>
@@ -362,7 +368,7 @@
       <div class="panel">
         <div class="panel-head"><span>Then why ever go outward?</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">Inward forms are cheaper for you, and usually cheaper for them too. Outward forms cost you correction but force speed on both players. Which one you want depends on whose skills the fight should test, and that is the next section.</p>
+          <p style="font-size:var(--step--1); margin:0">Inward forms tend to leave you with a smaller correction after a reversal. Outward forms can leave you with a larger correction, but they also create more screen speed for both players. Which one you want depends on the kind of duel you are trying to create.</p>
         </div>
       </div>
     </div>
@@ -381,33 +387,33 @@
         <span class="chip part">Part seven</span>
         <h2 class="h-sec">Which kind of aim duel do you want?</h2>
 
-        <p style="margin-top:1.4rem">At this point it is tempting to ask which form is best. That is the wrong question, and the simulation shows why.</p>
+        <p style="margin-top:1.4rem">At this point it is tempting to ask which form is best. That question misses the tradeoff.</p>
 
-        <p>Run the same fight with both players equally skilled, and mirroring puts both of you at 100%: the target is frozen for both of you, so nobody misses and nobody wins. Anti-mirroring drops both of you to a quarter. No form made you hit more than them.</p>
+        <p>Mirroring can make both players nearly stationary on each other’s screens. Anti-mirroring does the opposite: both players have to track much faster. The diagonal forms create their own mixes of speed, precision, and changing range. None of these choices hands you extra accuracy on its own.</p>
 
-        <p>What a form actually decides is <em>which skill the fight tests</em>. Mirroring makes the target almost stationary for both of you, so the fight becomes a plain trade of damage. Anti-mirroring forces both players to track at speed. The diagonal forms demand precision or smoothness in different amounts.</p>
+        <p>What a form decides is <em>which skill the fight tests</em>.</p>
 
         <p style="font-size:var(--step-1); line-height:1.42"><strong>So the real question is: what kind of aim duel do I want this to become?</strong></p>
 
         <ul class="notelist">
-          <li><strong>Better tracking than them?</strong> Anti-mirror, and make both players track.</li>
-          <li><strong>More health, or more damage per second?</strong> A plain trade favours you, so mirror and let it be one.</li>
-          <li><strong>Great precision but weaker at speed?</strong> Slow the fight down with half-sideways mirroring.</li>
+          <li><strong>Trust your fast tracking more than theirs?</strong> Consider making the duel faster with anti-mirroring.</li>
+          <li><strong>Have the health, damage, healing, or teammate advantage?</strong> A simpler trade may already favor you, so mirroring can make sense.</li>
+          <li><strong>Prefer fine control to high-speed tracking?</strong> A slower diagonal form may suit the fight better.</li>
         </ul>
 
-        <p class="tryit"><b>Give yourself the better mouse control</b> in the figure, and watch which bars move. Mirroring barely reacts. It is the one form that refuses to be about mouse control, so it suits the player with the resource advantage and betrays the player with the skill advantage.</p>
+        <p class="tryit"><b>Change the mouse-control setting</b> and compare how sensitive each form is to it. Do not read the bars as win probability. They show what this simplified model emphasizes when one variable changes. Mirroring changes least, because there is much less lateral motion to track.</p>
       </div>
       <div class="turn-cases">
         <div class="panel">
           <div class="panel-head"><span>Reading the figure</span></div>
           <div class="panel-body">
-            <p style="font-size:var(--step--1); margin:0">Each row is the same twenty-second fight under one form. Bars to the right of the line are fights you win; length is your time on target minus theirs. The table below it gives the raw percentages.</p>
+            <p style="font-size:var(--step--1); margin:0">Each row is the same twenty-second example under one form. Bars to the right show a modeled time-on-target advantage for you; bars to the left favor the opponent. This is not a prediction of who wins a real match. The table below gives the raw percentages.</p>
           </div>
         </div>
         <div class="panel">
           <div class="panel-head"><span>A trade is not a failure</span></div>
           <div class="panel-body">
-            <p style="font-size:var(--step--1); margin:0">If time favours you, with more health or help on the way, an even trade is a win. The mistake is trading when the only thing you had over them was aim.</p>
+            <p style="font-size:var(--step--1); margin:0">If time favors you, with more health or help on the way, an even trade is a win. The mistake is trading when the only thing you had over them was aim.</p>
           </div>
         </div>
       </div>
@@ -430,19 +436,19 @@
       <span class="chip part">Part eight</span>
       <h2 class="h-sec">Aiming is not the only job your movement has</h2>
 
-      <p style="margin-top:1.4rem">Everything so far has treated your feet as servants of your crosshair. They have other work.</p>
+      <p style="margin-top:1.4rem">So far we have looked at movement mainly through the lens of your own aim. In a real fight, your movement has other jobs too.</p>
 
-      <p>Sometimes your movement needs to help your aim. Sometimes it needs to make you harder to hit. Sometimes it needs to carry you behind a wall, towards your team, or out of another enemy’s line of fire. <strong>Good movement has a purpose.</strong> The important skill is knowing which job matters most right now.</p>
+      <p>Sometimes your movement needs to help your aim. Sometimes it needs to make you harder to hit. Sometimes it needs to carry you behind a wall, toward your team, or out of another enemy’s line of fire. <strong>Good movement has a purpose.</strong> The important skill is knowing which job matters most right now.</p>
 
-      <p>Strafe aiming is one tool, not a rule you owe the whole fight. Use it while helping your aim is the priority. Break it when dodging or repositioning matters more, then return to it when the situation changes. Practising the forms makes that switch easier, because you no longer have to think through every keypress.</p>
+      <p>Strafe aiming is one tool, not a rule you owe the whole fight. Use it when helping your aim is the priority. Break it when dodging or repositioning matters more, then return to it when the situation changes. Practicing the forms makes that switch easier, because you no longer have to think through every keypress.</p>
 
       <h3 class="h-sub" style="margin-top:2rem">Go somewhere while you dodge</h3>
 
-      <p style="margin-top:0.8rem">Here is the cheapest improvement available to almost every player. Over a few seconds, drift one way more than the other. Do not finish the fight standing where you started it.</p>
+      <p style="margin-top:0.8rem">One simple improvement is to make sure your dodge is taking you somewhere useful. Over a few seconds, drift one way more than the other. Do not finish the fight standing where you started it.</p>
 
-      <p>A dodge that oscillates on the spot has a fixed centre, and a fixed centre is a place someone can simply leave their crosshair, and you cross it twice per cycle for free. Drift, and that stops working: the centre keeps moving away from wherever they parked. Drifting also makes both of you cover a wider angle, which costs you a little and them more, and it is the only way to get anywhere mid-fight, whether that is reaching cover, breaking an angle, or rejoining your team.</p>
+      <p>If your dodge stays centered on one spot, an opponent can hold near that center and let you cross their crosshair repeatedly. Add some drift and the center of your movement keeps changing, so that shortcut becomes less reliable. More importantly, the same drift can carry you toward cover, out of an angle, or back toward your team.</p>
 
-      <p class="tryit"><b>Drag their drift to zero</b> in the figure and watch the thick orange appear. That is a crosshair sitting still, being paid for nothing.</p>
+      <p class="tryit"><b>Set the drift to zero</b> and watch what happens when the crosshair simply waits near the center of the dodge. Then add drift and see how quickly that fixed point stops being useful.</p>
     </div>
     <div class="stack">
       <div class="panel">
@@ -453,7 +459,7 @@
             <div class="readout"><span class="lbl">Avoid damage</span><span class="val">dodge</span></div>
             <div class="readout"><span class="lbl">Be somewhere better</span><span class="val">reposition</span></div>
           </div>
-          <p style="font-size:var(--step--1); margin:0.7rem 0 0" class="dim">No movement does all three at once. Most good movement does two.</p>
+          <p style="font-size:var(--step--1); margin:0.7rem 0 0" class="dim">Movement usually has to trade among these three jobs. In a real fight, decide which one or two matter most right now.</p>
         </div>
       </div>
       <div class="panel">
@@ -472,7 +478,7 @@
   <div class="wrap" style="margin-top:3.5rem">
     <div class="heuristic">
       <div class="eyebrow"><span>Checkpoint</span></div>
-      <p><strong>You now know enough to use strafe aiming in a real match.</strong> Answer their changes of direction. Choose with or against them for a reason. Drift somewhere while you do it. Everything below this line is depth, not prerequisite.</p>
+      <p><strong>You now know enough to use strafe aiming in a real match.</strong> Respond to the enemy’s reversals. Decide whether you want to move with or against them. Keep your overall movement taking you somewhere useful. Everything below this point adds depth; none of it is required to start practicing the idea.</p>
     </div>
   </div>
 </section>
@@ -482,23 +488,23 @@
   <div class="wrap">
     <div class="plate-text">
       <span class="chip part">Going deeper</span>
-      <h2 class="h-sec">Chains, and the full catalogue</h2>
+      <h2 class="h-sec">Chains and the full catalog</h2>
       <p style="margin-top:1.4rem">Everything from here is for readers who want the whole framework. There is a lot of it, and none of it is required to get value from the first eight parts.</p>
     </div>
   </div>
 
   <div class="wrap plate" style="margin-top:2.5rem">
     <div class="plate-text">
-      <h3 class="h-sub">The flaw in everything so far</h3>
-      <p style="margin-top:0.8rem">Mirror left and right for four seconds and you end up exactly where you started. So does every form built from two opposite directions, because the two halves cancel. You may be aiming beautifully, but you are not going anywhere, and a fight you cannot leave is a fight anyone else may join.</p>
+      <h3 class="h-sub">The problem with repeating one form forever</h3>
+      <p style="margin-top:0.8rem">Mirror left and right for several seconds and you finish where you started. The same is true of any basic form built from two opposite directions: one half cancels the other. Your tracking may be fine, but the pattern itself does not move you toward cover, your team, or a better angle.</p>
       <p>The figure shows four seconds of three forms as tracks on the ground. The first two return to their starting point every cycle, forever. The third, built from a quarter turn instead of a half turn, goes somewhere.</p>
-      <p>So: what if you need to keep strafe aiming <em>and</em> move towards cover?</p>
+      <p>So what if you want to keep responding to the enemy while also traveling somewhere?</p>
     </div>
     <div class="stack">
       <div class="panel">
         <div class="panel-head"><span>Quarter-turn forms</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">Answer their left with forward-right and their right with forward-left, and both halves push you towards them: a <strong>forward triangle</strong>. The backward version retreats. The sideways versions circle. None of them can be held forever, since you eventually reach them, leave the fight, or lap them. That is why they get combined.</p>
+          <p style="font-size:var(--step--1); margin:0">Answer their left with forward-right and their right with forward-left. Now both halves of the pattern move you forward overall. The guide calls this a <strong>forward triangle</strong>. Reverse it and you retreat; rotate it and you begin to circle. None can be held forever, which is why they get combined.</p>
         </div>
       </div>
     </div>
@@ -511,23 +517,23 @@
   <div class="wrap plate" style="margin-top:3.5rem">
     <div class="plate-text">
       <h3 class="h-sub">Connections: switching forms without breaking the rule</h3>
-      <p style="margin-top:0.8rem">Start in a left-right mirror. At the right moment, replace one side with forward-right. Your local dodge still answers the enemy, but the whole pattern now drifts forward.</p>
-      <p>That switch was legal because the two forms <em>agreed</em> at the moment you made it: there was one enemy direction for which both forms wanted the same key from you, and you passed through it. The guide calls such a shared prescription a <strong>connection</strong>, and it is the mechanism behind every combined pattern.</p>
-      <p>Two things are worth knowing. First, no two of the five basic families connect to each other, so nothing built purely from them can travel. Second, bring in the quarter-turn forms and the whole set becomes a network you can move through: chains of connected forms that draw triangles, closed rhombi, or circles around the enemy on the ground, while never once breaking the strafe-aiming rule.</p>
+      <p style="margin-top:0.8rem">Start with a left-right mirror. Now replace one of the two responses with forward-right. If you make that switch at a moment when both forms call for the same key, you can move from one pattern into the other without adding an extra reversal.</p>
+      <p>The guide calls that shared response a <strong>connection</strong>. Connections let you chain forms together so that your local dodge still responds to the enemy while the larger path carries you somewhere.</p>
+      <p>The basic opposite-direction forms do not connect directly to one another. Once quarter-turn forms are added, however, you can build longer chains that travel forward, backward, or around the opponent while your local dodge keeps responding to the enemy.</p>
       <p class="tryit"><b>Build a chain.</b> The figure only offers forms that legally connect to where you are, with the shared key written on the arrow. Try closing a rhombus, then try circling them.</p>
     </div>
     <div class="stack">
       <div class="panel">
         <div class="panel-head"><span>Two exercises from the guide</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0 0 0.7em">Build a pattern that travels only towards or away from the enemy, through connections.</p>
+          <p style="font-size:var(--step--1); margin:0 0 0.7em">Build a pattern that travels only toward or away from the enemy, through connections.</p>
           <p style="font-size:var(--step--1); margin:0">Build one rhombus in each direction of travel, and work out which side of each is the inward side.</p>
         </div>
       </div>
       <div class="panel">
-        <div class="panel-head"><span>Why the catalogue is worth reading</span></div>
+        <div class="panel-head"><span>Why the catalog is worth reading</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">Knowing how much mouse a given change of direction demands is a learned skill. Working out why two similar-looking shapes ask for completely different corrections is the training, even before you ever use them in a game.</p>
+          <p style="font-size:var(--step--1); margin:0">Learning how much mouse movement each change of direction requires takes practice. Comparing two similar-looking patterns and noticing why they require different corrections is useful training even before you try to use the full chain in a match.</p>
         </div>
       </div>
     </div>
@@ -544,14 +550,14 @@
   <div class="wrap plate" style="margin-top:3.5rem">
     <div class="plate-text">
       <h3 class="h-sub">Advanced forms: playing the player</h3>
-      <p style="margin-top:0.8rem">The forms so far respond to what the enemy does. The advanced ones anticipate what the enemy will do. Each advanced form tries to provoke a predictable response, then uses the next movement to punish that response.</p>
-      <p>That is why they need timing and a feel for how ordinary players react when their aim is under pressure. The three below are the ones the original guide works through, each shown with the situation it is for. Notice the signature of all three: the enemy’s change of direction is predictable, and you are still, technically, strafe aiming.</p>
+      <p style="margin-top:0.8rem">The forms so far react to what the enemy does. More advanced patterns try to anticipate how the enemy will respond to your movement. They are less about memorizing a shape and more about recognizing a tendency: show the opponent one problem, see how they solve it, then use that response to predict what comes next.</p>
+      <p>That is why they need timing and a feel for how players react when their aim is under pressure. The three below are the ones the original guide works through, each shown with the situation it is for. Notice the signature of all three: the enemy’s change of direction is predictable, and you are still, technically, strafe aiming.</p>
     </div>
     <div class="stack">
       <div class="panel">
         <div class="panel-head"><span>Probing</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">The general habit behind these: test the opponent, press where they are weak, step back where they are solid. When you move in a way that is hard to aim at, they will use their own movement to make aiming easier. Once they start moving to make their own aim easier, their response becomes easier for you to predict.</p>
+          <p style="font-size:var(--step--1); margin:0">Use movement to test what the opponent is comfortable with. If a pattern repeatedly makes them alter their own movement to stabilize their aim, that response gives you information. Once their response becomes consistent, their next direction change becomes easier to anticipate.</p>
         </div>
       </div>
     </div>
@@ -564,8 +570,8 @@
   <div class="wrap plate" style="margin-top:3.5rem">
     <div class="plate-text">
       <h3 class="h-sub">All fifty-six</h3>
-      <p style="margin-top:0.8rem">Eight directions you might be holding when they turn, seven you could switch to. The whole space fits in one table, and the named forms turn out to be a small outlined minority of it. The number in each cell is how fast the enemy crosses your screen while you hold that pair.</p>
-      <p class="tryit"><b>Point at any cell.</b> The empty diagonal is the definition itself: a form has to change direction.</p>
+      <p style="margin-top:0.8rem">Eight directions you might be holding when they turn, seven you could switch to. The whole space fits in one table, and the named forms occupy only a small outlined subset of it. The number in each cell is how fast the enemy crosses your screen while you hold that pair.</p>
+      <p class="tryit"><b>Point at any cell.</b> The diagonal is empty because staying on the same direction is not a change of direction, so it does not define a form.</p>
     </div>
     <div class="stack">
       <div class="panel">
@@ -590,15 +596,15 @@
   <div class="wrap plate" style="margin-top:3.5rem">
     <div class="plate-text">
       <h3 class="h-sub">Calm is a technique, not a temperament</h3>
-      <p style="margin-top:0.8rem">Calm play becomes easier when the fight itself is easier to read. If your movement keeps the target slow on your screen, your position removes some of their escape routes, and you engage at a moment you chose, there are simply fewer things you need to react to.</p>
-      <p>Panic creates the opposite problem. Spam movement keys, jump constantly, and flick at every change, and you make your own screen faster and less predictable. Then you have to process the chaos you created yourself. Simplifying your movement can simplify what you see.</p>
-      <p>The catch is that calm play does not feel like doing anything. Holding a long strafe, or keeping the mouse still at the centre of their dodge, can be the best move available and still feel passive. Confidence in these plays only comes from having seen them work, which is what practice is for.</p>
+      <p style="margin-top:0.8rem">Calm play becomes easier when the fight gives you fewer things to process at once. If your movement keeps the target manageable on your screen, your position removes some escape routes, and you engage on your own timing, the fight becomes easier to read.</p>
+      <p>Panic can create the opposite problem. If you spam movement keys, jump without a reason, and flick at every change, you make your own view faster and less predictable. Now you have to process some of the chaos you created yourself. Simple movement can make the fight easier to see.</p>
+      <p>The catch is that calm play does not feel like doing anything. Holding a long strafe, or keeping the mouse still at the center of their dodge, can be the best move available and still feel passive. Confidence in these plays only comes from having seen them work, which is what practice is for.</p>
     </div>
     <div class="stack">
       <div class="panel">
         <div class="panel-head"><span>Watching better players</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">Playing against stronger players usually teaches you more than copying isolated movements from their clips. And when you do watch top players, do not analyse details. Absorb the overall feel of their fights and try to reproduce that.</p>
+          <p style="font-size:var(--step--1); margin:0">When you watch better players, do not copy isolated keypresses. Look for repeatable decisions: when they lengthen a strafe, when they reverse, when they let a target cross the crosshair, and when their movement starts drifting toward cover. Try to understand the purpose before copying the pattern.</p>
         </div>
       </div>
     </div>
@@ -610,16 +616,16 @@
   <div class="wrap plate">
     <div class="plate-text">
       <h2 class="h-sec">Practice</h2>
-      <p style="margin-top:1.4rem">Tying movement to aim takes a long time, and no one should expect it to come quickly. Two principles carry most of the weight.</p>
-      <p><strong>Practise one thing at a time, deliberately.</strong> Pick the thing this session is for, whether that is a form, drifting while you dodge, or taking an angle, and think about it actively while you play. One-versus-one modes suit this: every round has a pause in which to decide what the next one is testing.</p>
-      <p><strong>Find somewhere you do not mind looking bad.</strong> An alias, an unranked queue, anything. The practice that improves you is the practice where you try things that do not work yet, and you will not try them where the result matters to you.</p>
+      <p style="margin-top:1.4rem">Coordinating movement and aim takes deliberate practice. Two habits make that practice much more useful.</p>
+      <p><strong>Practice one thing at a time.</strong> Choose one focus for the session: a specific form, adding drift, or moving toward cover while fighting. In one-versus-one modes, use the pause between rounds to choose a single focus for the next fight.</p>
+      <p><strong>Practice somewhere experimentation is cheap.</strong> Customs, aim trainers, unranked modes, or any environment where you are willing to try movement that does not work yet. If you care too much about the immediate result, you will usually fall back to what already feels comfortable.</p>
       <p class="dim" style="font-size:var(--step--1)">One habit worth stealing: bind an aim-bot to your fire key in an aim trainer’s free play, and move alongside it. The bot has perfect mouse control, so it shows you what the mouse movement for the form you are learning should feel like. This can be a useful way to build a feel for a new one.</p>
     </div>
     <div class="stack">
       <div class="panel">
-        <div class="panel-head"><span>Scores mostly measure the wrong thing</span></div>
+        <div class="panel-head"><span>Scores measure what the scenario rewards</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">A scoring system is a tireless training partner, so if it rewards the wrong movement it teaches the wrong movement efficiently. None of the current systems rewards strafe aiming itself. The comparison below shows what each one actually pays for. Treat scores loosely and the intent exactly.</p>
+          <p style="font-size:var(--step--1); margin:0">A score can be useful feedback, but it may reward accuracy, survival, speed, or damage rather than the movement skill you are trying to train. Know what the score is measuring and do not let it become the goal of the drill. The comparison below shows what each system pays for.</p>
         </div>
       </div>
     </div>
@@ -632,7 +638,7 @@
   <div class="wrap" style="margin-top:3rem">
     <div class="plate-text" style="margin-bottom:1.5rem">
       <h3 class="h-sub">The routines</h3>
-      <p style="margin-top:0.8rem">Three KovaaK’s routines from the original guide, beginner to advanced, with a working timer. Start any block and the rest run in order. The note under each block says what it is for, which matters more than the scenario name.</p>
+      <p style="margin-top:0.8rem">These are three KovaaK’s routines adapted from the original guide, ordered from beginner to advanced, with a working timer. Start any block and the rest run in order. The note under each block explains the skill it is meant to train; that purpose matters more than the scenario name or score.</p>
     </div>
     <div data-widget="routines"></div>
   </div>
@@ -643,7 +649,8 @@
   <div class="wrap">
     <div class="plate-text">
       <h2 class="h-sec">The lab</h2>
-      <p style="margin-top:1.4rem">The lab lets you change either player’s skill, swap cameras, and test every form directly. Watch two things: how large your worst correction becomes after a reversal, and who wins the trade overall.</p>
+      <p style="margin-top:1.4rem">The lab lets you change the assumptions and see how the simplified model responds. Use it to compare relationships, not to predict the outcome of a real duel.</p>
+      <p>Watch two things: how large the modeled correction becomes after a reversal, and whether the setup favors one player’s time on target.</p>
       <p>A smaller correction is not automatically an advantage. If the same form also makes the enemy’s aim easier, you may simply have made the fight easier for both players.</p>
     </div>
   </div>
@@ -657,23 +664,25 @@
   <div class="wrap">
     <div class="plate-text" style="margin-bottom:1.8rem">
       <h2 class="h-sec">Glossary</h2>
-      <p style="margin-top:1rem">Every term used on this page, including the ones the main text deliberately delays, with a plain version beside each. The terms are AIMER7’s; the plain versions are this site’s.</p>
+      <p style="margin-top:1rem">This glossary includes every term used on the page, including terms that the main guide deliberately introduces late. The original AIMER7 terminology comes first, with a plain-language description beside each entry.</p>
     </div>
     <div data-widget="glossary"></div>
   </div>
 </section>
 
-<!-- ═══════════════════════════════════════ notes: maths and sources ═══ -->
+<!-- ═══════════════════════════════════════ notes: math and sources ═══ -->
 <section class="band appendix" id="notes">
   <div class="wrap plate plate-wide">
     <div class="plate-text">
-      <h2 class="h-sec">Notes: the maths, the model, and the sources</h2>
+      <h2 class="h-sec">Notes: the math, the model, and the sources</h2>
 
       <h3 class="h-sub" style="margin-top:1.6rem">Where this comes from</h3>
-      <p>The framework, the terminology, the form catalogue and the routines come from <strong>Strafe Aiming 101</strong>, published free by <a href="https://www.twitch.tv/AIMER7" rel="noopener">AIMER7</a> in August 2019 as a companion to his earlier guide on geometric positioning. The material on purpose, drifting, control and calm draws on <strong>Fundamentals of Strafe</strong> by <a href="https://bysam.github.io/strafe/" rel="noopener">Sam (@400apm)</a>, July 2022, itself written to lead readers to the AIMER7 guides. Both are worth reading in full. What this site adds is the simulation: the guides argue in prose, and this page runs the arguments instead.</p>
+      <p>The framework, the terminology, the form catalog and the routines come from <strong>Strafe Aiming 101</strong>, published free by <a href="https://www.twitch.tv/AIMER7" rel="noopener">AIMER7</a> in August 2019 as a companion to his earlier guide on geometric positioning. The material on purpose, drifting, control and calm draws on <strong>Fundamentals of Strafe</strong> by <a href="https://bysam.github.io/strafe/" rel="noopener">Sam (@400apm)</a>, July 2022, itself written to lead readers to the AIMER7 guides. Both are worth reading in full. This site adds interactive diagrams and a simplified movement-and-aim model to make some of those relationships easier to inspect. The model is not empirical evidence that one form is universally better in live play. It deliberately removes many things that matter in a real game so that one relationship can be examined at a time.</p>
 
       <h3 class="h-sub" style="margin-top:1.8rem">The assumptions</h3>
-      <p>Everything on the page assumes the eight movement directions are equivalent, with the same speed and acceleration, and that you hold a tracking weapon with no spread, recoil or reload. Nobody jumps. Ground speed is 10 units per second because the original guide uses that round number; nothing depends on it. None of these is true of any real game, and all of them can be relaxed once the shape of the idea is clear.</p>
+      <p>The interactive examples simplify the game on purpose. The eight movement directions use the same nominal movement speed and acceleration; the weapon behaves like a simple tracking weapon; and the examples ignore jumping, recoil, spread, reloads, projectiles, abilities, map geometry, and many other game-specific effects unless a section explicitly adds them.</p>
+      <p>The 10-units-per-second movement speed is only a convenient reference value inherited from the original guide. The useful relationships do not depend on memorizing that number.</p>
+      <p>These assumptions are useful for isolating the idea, not for reproducing a particular game.</p>
 
       <h3 class="h-sub" style="margin-top:1.8rem">Relative speed across the sight line</h3>
       <p>Put the line of sight along <em>x</em>. You look along it, the enemy looks back along it, and their left hand points where your right hand points. A held key becomes a world vector by rotating it into that player’s frame. Split both velocities into a part across the sight line and a part along it; only the first is what the mouse must follow.</p>
@@ -691,33 +700,34 @@
       <p>The classification is usually given as a rule with cases. This site measures it instead: freeze the crosshair at the instant of reversal, hold a candidate key for one reaction time, and record the angle between crosshair and body; standing still is the baseline. That one experiment reproduces every label in the guide, including back-and-forth coming out mixed. There the deciding factor is the range: pushing in shortens it, and screen speed goes as one over the range.</p>
 
       <h3 class="h-sub" style="margin-top:1.8rem">The aim model</h3>
+      <p><strong>What this model can tell you:</strong> how the assumptions on this page interact mechanically. <strong>What it cannot tell you:</strong> which movement is optimal against a particular player, hero, weapon, map, team composition, or live-game situation.</p>
       <p>Both simulated players run the same controller. It has two delays, and they are different things: tracking runs on visual data about 70 ms old, while <em>noticing that the target’s rate has jumped</em> is cognitive and slow. That second delay is the reaction time the sliders set. Between surprises the hand matches the rate it believes the target has, with a light trim. After a surprise the belief holds its old value for one reaction time while the gap opens at the full relative speed; then one ballistic flick closes it, aimed once, missing by a fixed fraction of its own size, so a bigger correction is also a worse one. Tracking wobble is a settling random walk whose size grows with commanded mouse speed, which is the only place “mouse control” enters the model.</p>
-      <p>Nothing in the controller knows what a form is. The forms are inputs, and the accuracy ranking the model produces (mirror, then half-sideways mirror, then back-and-forth, then the anti-mirrors) is the guide’s ranking, derived rather than encoded. What the model leaves out: walls and height, jumping, projectile travel, spread, and an enemy who reads you back (the simulated enemy is a dodge script with a period and a drift).</p>
+      <p>Nothing in the controller knows what a form is. The forms are inputs, and the accuracy ranking the model produces (mirror, then half-sideways mirror, then back-and-forth, then the anti-mirrors) matches the ranking in the original guide. This is an internal sanity check on the implementation, not independent validation of the guide. What the model leaves out: walls and height, jumping, projectile travel, spread, and an enemy who reads you back (the simulated enemy is a dodge script with a period and a drift).</p>
 
       <h3 class="h-sub" style="margin-top:1.8rem">Where the measurements and the original differ</h3>
-      <p>Measuring prose occasionally produces a different answer from the prose. Each case is set out below so you can judge it yourself.</p>
+      <p>In a few cases, the simplified measurement used here gives a different answer from the original guide. Those cases are listed below so the assumptions and the disagreement are visible rather than hidden.</p>
     </div>
 
     <div class="stack">
       <div data-widget="exactNumbers"></div>
       <div class="panel">
-        <div class="panel-head"><span>Reproducing the guide</span></div>
+        <div class="panel-head"><span>Implementation checks</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0 0 0.6em">The checkable claims are pinned by a test suite, so they cannot quietly stop being true:</p>
+          <p style="font-size:var(--step--1); margin:0 0 0.6em">The automated tests make sure code changes do not alter the calculations unintentionally. They test the internal consistency of this site; they are not evidence that the simplified model captures every real-game situation.</p>
           <ul class="notelist checks" style="font-size:var(--step--1)">
             <li>the five relative speeds, exactly</li>
             <li>the census: 8 + 16 + 16 + 16 = 56</li>
             <li>no two half-turn forms share a prescription</li>
             <li>every inward, outward and mixed label, derived from components and confirmed by the frozen-mouse probe</li>
             <li>all half-turn forms have zero net travel; the quarter-turn blocks do not</li>
-            <li>aiming at the middle beats tracking against fast reversals, and loses against slow ones</li>
-            <li>a drifting dodge starves a parked crosshair</li>
+            <li>in the model, holding the middle beats tracking against fast reversals, and loses against slow ones</li>
+            <li>a drifting dodge reduces the value of holding a fixed crosshair</li>
           </ul>
           <p class="cmd"><code>npm test</code></p>
         </div>
       </div>
       <div class="panel">
-        <div class="panel-head"><span>Colours, precisely</span></div>
+        <div class="panel-head"><span>Colors, precisely</span></div>
         <div class="panel-body">
           <div class="readouts">
             <div class="readout"><span class="lbl"><i class="swatch sw-blue"></i>Blue</span><span class="val">you</span></div>
@@ -741,13 +751,13 @@
   <div class="wrap plate">
     <div class="plate-text">
       <h2 class="h-sub">Take this away</h2>
-      <p style="font-size:var(--step-1); line-height:1.45">Your keyboard changes the amount of aiming your mouse has to do. You cannot remove reaction delay, but before every reversal your feet have already decided how big the correction will be, which skill the fight is testing, and where you will be standing when it ends. Choose all three on purpose.</p>
+      <p style="font-size:var(--step-1); line-height:1.45">Your keyboard changes how much work your mouse has to do. When the enemy reverses, the movement you were already making affects the correction you will need, the kind of aim duel you are creating, and where the fight is carrying you. Good strafe aiming means choosing those tradeoffs deliberately rather than moving on autopilot.</p>
     </div>
     <div class="stack">
       <div class="panel">
         <div class="panel-head"><span>Sources</span></div>
         <div class="panel-body meta">
-          <p style="margin-bottom:0.8em"><strong>Strafe Aiming 101</strong>, AIMER7, August 2019: the framework, terminology, catalogue and routines.</p>
+          <p style="margin-bottom:0.8em"><strong>Strafe Aiming 101</strong>, AIMER7, August 2019: the framework, terminology, catalog and routines.</p>
           <p style="margin-bottom:0.8em"><strong>Fundamentals of Strafe</strong>, Sam (@400apm), July 2022: purpose, drift, control and calm.</p>
           <p>
             <a href="https://www.twitch.tv/AIMER7" rel="noopener">twitch.tv/AIMER7</a><br>
@@ -758,14 +768,14 @@
       <div class="panel">
         <div class="panel-head"><span>This site</span></div>
         <div class="panel-body meta">
-          <p style="margin-bottom:0.8em">The simulation, the aim model, the frozen-mouse probe, the trade comparison and the chain builder are additions rather than part of the original framework. Where they disagree with the guides, it is said in the notes.</p>
+          <p style="margin-bottom:0.8em">The interactive figures, simplified aim model, frozen-crosshair probe, trade comparison, and chain builder are additions to the original framework. Any places where these simplified tools disagree with the original guides are listed in the Notes section.</p>
           <p>A companion to <a href="https://plivdan.github.io/geometric-positioning/" rel="noopener">the geometric positioning guide</a>.</p>
         </div>
       </div>
     </div>
 
     <p class="signoff wrap">
-      By Philip L (Clocktock). A simulated companion to the 2019 guide by
+      By Philip L (Clocktock). An interactive companion to the 2019 guide by
       <a href="https://www.twitch.tv/AIMER7" rel="noopener">AIMER7</a>.
     </p>
   </div>

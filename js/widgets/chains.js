@@ -89,7 +89,7 @@ export function connectionMap(node) {
     const spanX = Math.max(2, hi[0] - lo[0]), spanY = Math.max(2, hi[1] - lo[1]);
     const scale = Math.min((w - 90) / Math.max(spanY, 2), (h - 80) / Math.max(spanX, 2)) * 0.9;
     const midX = (lo[0] + hi[0]) / 2, midY = (lo[1] + hi[1]) / 2;
-    // +x runs towards him, and he belongs at the top of the picture.
+    // +x runs toward him, and he belongs at the top of the picture.
     const SX = (x, y) => w / 2 + (y - midY) * scale;
     const SY = (x, y) => h / 2 - (x - midX) * scale;
 
@@ -106,11 +106,11 @@ export function connectionMap(node) {
     ctx.beginPath(); ctx.arc(SX(hi[0] + 4, midY), SY(hi[0] + 4, midY), 5, 0, Math.PI * 2); ctx.fill();
     ctx.font = MONO(9.5, 500); ctx.fillStyle = alpha(C.redLit, 0.85);
     ctx.textAlign = 'center';
-    ctx.fillText('towards the enemy', SX(hi[0] + 4, midY), SY(hi[0] + 4, midY) - 12);
+    ctx.fillText('toward the enemy', SX(hi[0] + 4, midY), SY(hi[0] + 4, midY) - 12);
     ctx.textAlign = 'left';
 
     t.segments.forEach((seg) => {
-      ctx.strokeStyle = alpha(seg.colour, 0.92);
+      ctx.strokeStyle = alpha(seg.color, 0.92);
       ctx.lineWidth = 2.4; ctx.lineJoin = 'round';
       ctx.beginPath();
       seg.pts.forEach(([x, y], i) => { const sx = SX(x, y), sy = SY(x, y); i ? ctx.lineTo(sx, sy) : ctx.moveTo(sx, sy); });
@@ -140,7 +140,7 @@ export function connectionMap(node) {
   node.appendChild(el('div.lab',
     el('div.lab-main',
       el('div.scope', el('div.scope-head', el('span', 'The ground you cover'), el('b', 'the chain, walked')), canvas),
-      el('p.fig-cap', el('b', 'Each colour is one form'), ', held for two of the enemy\u2019s direction changes. Chain a forward triangle to a half-sideways mirror to a backward triangle and the track closes into a rhombus. Hold a back-and-forth triangle on its own and it closes into a circle around them.'),
+      el('p.fig-cap', el('b', 'Each color is one form'), ', held for two of the enemy\u2019s direction changes. Chain a forward triangle to a half-sideways mirror to a backward triangle and the track closes into a rhombus. Hold a back-and-forth triangle on its own and it closes into a circle around them.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Your chain')), el('div.panel-body', chainEl)),
@@ -160,7 +160,7 @@ function track(chain) {
   const pts = [[0, 0]];
   const segments = [];
   chain.forEach((f, i) => {
-    const seg = { colour: COLOURS[i % COLOURS.length], pts: [[x, y]] };
+    const seg = { color: COLOURS[i % COLOURS.length], pts: [[x, y]] };
     for (let n = 0; n < 4; n++) {
       const v = yourVec(n % 2 === 0 ? f.onLeft : f.onRight);
       for (let s = 0; s < 10; s++) {
@@ -179,8 +179,8 @@ function nameShape(chain, drift) {
     const f = chain[0];
     if (f.turn === 180) return 'a line, back and forth';
     if (f.turn === 90 && f.tier === 'block' && f.name.startsWith('Back-and-forth')) return 'a circle around the enemy';
-    if (f.turn === 90) return 'a triangle, travelling';
-    return 'a wedge, travelling';
+    if (f.turn === 90) return 'a triangle, traveling';
+    return 'a wedge, traveling';
   }
   if (drift < 0.6) return 'a closed shape: a rhombus';
   if (chain.length >= 3) return 'a chain of triangles';
@@ -203,7 +203,7 @@ export function advancedCases(node) {
       why: [
         'Go backward as they go right. At close range that opens the angle to their left enormously, and their crosshair falls behind you.',
         'A crosshair that is behind wants help from movement, so they change direction to your left to bring the relative speed up.',
-        'The moment they do, you push forward-right, towards them and to their left. Because you are closing the range, their own change of direction now works against them and for you.',
+        'The moment they do, you push forward-right, toward them and to their left. Because you are closing the range, their own change of direction now works against them and for you.',
       ],
       close: 'They turn their mouse a long way. You barely turn yours. They chose the change of direction and it still cost them.',
     },
@@ -222,7 +222,7 @@ export function advancedCases(node) {
       when: 'You need to be somewhere else, and you would rather not be free damage on the way.',
       why: [
         'While they go right you go backward, so their mouse is tracking a ten-unit sweep to the left.',
-        'When they reverse, you go right, towards their left. They have to flick left and stop the flick exactly on you, because from that moment you are mirroring them and the target is not moving.',
+        'When they reverse, you go right, toward their left. They have to flick left and stop the flick exactly on you, because from that moment you are mirroring them and the target is not moving.',
         'A flick that has to stop exactly is the flick people miss. When they miss, they will change direction to get the mouse moving again, and so should you.',
       ],
       close: 'This is a repositioning form that happens to be inward-directed. Use it to go somewhere, not to stand still.',

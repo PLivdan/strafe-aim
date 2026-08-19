@@ -136,7 +136,7 @@ export function routines(node) {
 export function scoring(node) {
   const SYS = [
     {
-      name: 'Distance travelled',
+      name: 'Distance traveled',
       how: 'Points for ground covered, whichever way you go.',
       pays: 'Long dodging: keep going through the bot\u2019s change of direction. That is a real and useful movement form, but it is the opposite of strafe aiming.',
       cheese: 'Hold back and forth. Full marks, no learning.',

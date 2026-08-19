@@ -151,14 +151,14 @@ export function shortDodge(node) {
     left = duelFigure({ ...common, title: 'Answering every change',
       onFrame: (s) => rLeft.set(`${Math.round((s.hitsYou / Math.max(1, s.shotsYou)) * 100)}%`) });
     right = duelFigure({ ...common, title: 'Parked on the middle',
-      params: { range: 14, aimStyle: 'centre' },
+      params: { range: 14, aimStyle: 'center' },
       onFrame: (s) => rRight.set(`${Math.round((s.hitsYou / Math.max(1, s.shotsYou)) * 100)}%`) });
     mount.appendChild(el('div.stack', left.node));
     mount.appendChild(el('div.stack', right.node));
     advice.textContent = dodge < 0.28
       ? 'At this rate they reverse before you could have noticed the last one. Answering them is not physically possible; aiming at the middle of their dodge is.'
       : dodge < 0.45
-        ? 'Around here it is a genuine choice, and it depends on your reaction time rather than on principle.'
+        ? 'Around here either response can work. It depends on the player and the situation.'
         : 'Now the dodge is long enough to answer, and following them is worth more than waiting for them.';
   }
 
