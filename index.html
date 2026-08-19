@@ -21,18 +21,23 @@
     <div class="tocbar-links">
       <a href="#miss">Why you miss</a>
       <a href="#withagainst">With or against</a>
-      <a href="#rule">The rule</a>
-      <a href="#relative">Screen speed</a>
       <a href="#forms">The forms</a>
-      <a href="#reverse">Reversals</a>
       <a href="#duel">Pick the duel</a>
       <a href="#purpose">Purpose</a>
       <a href="#deeper">Going deeper</a>
-      <a href="#practice">Practice</a>
-      <a href="#lab">The lab</a>
-      <a href="#glossary">Glossary</a>
-      <a href="#notes">Notes</a>
     </div>
+    <details class="tocmore">
+      <summary>More</summary>
+      <div class="tocmore-menu">
+        <a href="#rule">The rule</a>
+        <a href="#relative">Screen speed</a>
+        <a href="#reverse">Reversals</a>
+        <a href="#practice">Practice</a>
+        <a href="#lab">The lab</a>
+        <a href="#glossary">Glossary</a>
+        <a href="#notes">Notes</a>
+      </div>
+    </details>
   </div>
 </nav>
 
@@ -72,7 +77,7 @@
     <div class="plate-text">
       <p>Your mouse is not the only thing controlling how hard a target is to track.</p>
       <p style="font-size:var(--step-1); line-height:1.4"><strong>Your movement changes their movement on your screen.</strong></p>
-      <p>This guide is about learning to control that relationship. Everything in it runs live — every figure is a small simulated fight, and every number underneath is measured from the fight you are watching. Where the ideas come from, and how the simulation works, is written up at the <a href="#notes">back of the page</a>.</p>
+      <p>This guide is about learning to control that relationship.</p>
     </div>
   </div>
 </header>
@@ -86,19 +91,19 @@
 
       <p style="margin-top:1.4rem">You are tracking someone smoothly. They change direction.</p>
 
-      <p>For a fraction of a second, your mouse keeps going the old way — you cannot react instantly, and during that delay nothing you do helps, because you have not yet noticed anything is wrong. By the time you react, your crosshair is behind them.</p>
+      <p>For a fraction of a second, your mouse keeps moving the old way. You have not reacted yet, so your aim is still following the movement you just saw. By the time you respond, the target has moved away from your crosshair.</p>
 
-      <p>Now you have to correct. The farther they got from your crosshair during that delay, the bigger the correction you owe. Call that distance <strong>the gap</strong>. It shows up in yellow in every figure on this page.</p>
+      <p>Now you have to correct. The farther they moved during that delay, the larger the correction. We will call that distance <strong>the gap</strong>. It appears in yellow throughout this guide.</p>
 
-      <p>The figure to the right runs this over and over, and times it. The bar underneath splits each miss into its two parts: the time before you noticed, and the time your mouse spent travelling back.</p>
+      <p>The figure runs this over and over, and times it. The bar underneath splits each miss into its two parts: the time before you noticed, and the time your mouse spent travelling back.</p>
 
-      <p>Here is the fact the whole guide rests on. <strong>You cannot make the first part shorter.</strong> No key on your keyboard makes you notice sooner. But look at what happens to the gap when you switch what you are doing with your feet: the same reaction delay produces a large correction in one case and almost none in another.</p>
+      <p>You cannot remove the delay between seeing a reversal and responding to it. But your movement can change how quickly the gap grows while you are waiting to react. The same reaction delay can leave you with a large correction in one case and almost none in another.</p>
 
       <p class="tryit"><b>Try it.</b> Switch between standing still and the other options, and watch the yellow number. Your reaction time never changes. The correction you owe does.</p>
 
       <div class="rulebox">
         <span class="chip rule">Rule</span>
-        <p>You cannot react sooner. But your movement decides how much correction you owe when you do react.</p>
+        <p>You cannot remove reaction delay. You can use movement to control how much correction is waiting for you afterwards.</p>
       </div>
     </div>
 
@@ -107,7 +112,7 @@
         <div class="panel-head"><span>Where the time goes</span></div>
         <div class="panel-body">
           <p style="font-size:var(--step--1); margin:0 0 0.6em"><strong>Noticing</strong> takes most people around 150–250 ms. It is close to fixed — sleep affects it, keys do not.</p>
-          <p style="font-size:var(--step--1); margin:0" class="dim"><strong>Correcting</strong> takes as long as the gap is big. That is the part this guide is about, and it is decided before you ever notice you are missing.</p>
+          <p style="font-size:var(--step--1); margin:0" class="dim"><strong>Correcting</strong> — the larger the gap, the longer the correction usually takes. That is the part this guide is about, and it is decided before you ever notice you are missing.</p>
         </div>
       </div>
     </div>
@@ -135,7 +140,7 @@
 
       <p>Your feet just changed how much work your mouse had to do. Nothing about the enemy changed at all.</p>
 
-      <p>These two choices have names. Moving with them is called <strong>mirroring</strong> — confusingly, you press the <em>opposite</em> keys to theirs, because you are facing each other, and that is what makes you travel the same way. Moving against them is called <strong>anti-mirroring</strong> — you press the <em>same</em> keys they do. A lot of players get this backwards for years. The world direction is what matters, not the key.</p>
+      <p>These two choices have names. Moving with them is called <strong>mirroring</strong> — confusingly, you press the <em>opposite</em> keys to theirs, because you are facing each other, and that is what makes you travel the same way. Moving against them is called <strong>anti-mirroring</strong> — you press the <em>same</em> keys they do. This is easy to get backwards because the players are facing each other. The world direction is what matters, not the key.</p>
     </div>
 
     <div class="stack">
@@ -193,17 +198,9 @@
     <div class="plate-text">
       <h3 class="h-sub">When the rule cannot be followed</h3>
       <p style="margin-top:0.8rem">There is one target the rule simply cannot be applied to: someone reversing faster than you can notice. If they change direction every 150 milliseconds and you need 200 to see it, there is no answer you can give in time. No form fixes this.</p>
-      <p>What works instead is refusing to chase. Once you recognise the pattern — which takes most people two or three hundred milliseconds — place your crosshair near the centre of their dodge and let them cross it twice on each full cycle. They are doing the aiming for you.</p>
-      <p>This is why spamming left-right for any length of time is a weak way to move: it hands out free hits to anyone patient enough to stop tracking. And it is why a <em>single</em> fast reversal, dropped into a longer pattern, is excellent — nobody re-reads the picture that fast, and a fake that arrives before they have looked again will land.</p>
+      <p>If someone reverses faster than you can respond, stop trying to follow every reversal. Hold near the centre of their pattern and let them cross your crosshair instead. A repeated short dodge becomes predictable because the player keeps returning through the same space.</p>
+      <p>That is also why one fast reversal inside a longer dodge can work so well. Repeating it gives away the pattern; using it once can catch the opponent before they adjust.</p>
       <p class="tryit"><b>Drag the slider.</b> Somewhere around a quarter of a second the better strategy flips. Where it flips for you depends on your reaction time, not on principle.</p>
-    </div>
-    <div class="stack">
-      <div class="panel">
-        <div class="panel-head"><span>Why fast reversals are unreadable</span></div>
-        <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">Seeing is not continuous. You re-read where the crosshair sits against the target a handful of times a second, and anything that happens between two readings arrives late and smeared. The small figure below the comparison makes this visible.</p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -334,7 +331,7 @@
 
   <div class="wrap" style="margin-top:3rem">
     <div class="plate-text" style="margin-bottom:1.5rem">
-      <p class="tryit"><b>Hold each form.</b> Watch the mouse trace under the monitor — that is the work your hand is doing. Then swap the camera and see what the same form does to <em>their</em> screen. Every form is a deal between the two monitors.</p>
+      <p class="tryit"><b>Hold each form.</b> Watch the mouse trace under the monitor — that is the work your hand is doing. Then swap the camera and see what the same form does to <em>their</em> screen. Every form changes the fight for both players, so always check the other camera too.</p>
     </div>
     <div data-widget="formExplorer"></div>
   </div>
@@ -433,9 +430,9 @@
 
       <p style="margin-top:1.4rem">Everything so far has treated your feet as servants of your crosshair. They have other work.</p>
 
-      <p>Sometimes your movement needs to help your aim. Sometimes it needs to dodge. Sometimes it needs to carry you behind a wall, towards your team, or out of a second enemy's line of fire. <strong>Good movement has a purpose</strong> — and deciding which job matters most right now is a bigger skill than any form.</p>
+      <p>Sometimes your movement needs to help your aim. Sometimes it needs to make you harder to hit. Sometimes it needs to carry you behind a wall, towards your team, or out of another enemy's line of fire. <strong>Good movement has a purpose.</strong> The important skill is knowing which job matters most right now.</p>
 
-      <p>Strafe aiming is the default you fall back on, not a contract. You will drop it and pick it back up several times in a single fight, and that is correct play. The reason to practise the forms until they are automatic is precisely so they can keep running underneath while your attention is on something else.</p>
+      <p>Strafe aiming is one tool, not a rule you owe the whole fight. Use it while helping your aim is the priority. Break it when dodging or repositioning matters more, then return to it when the situation changes. Practising the forms makes that switch easier, because you no longer have to think through every keypress.</p>
 
       <h3 class="h-sub" style="margin-top:2rem">Go somewhere while you dodge</h3>
 
@@ -545,14 +542,14 @@
   <div class="wrap plate" style="margin-top:3.5rem">
     <div class="plate-text">
       <h3 class="h-sub">Advanced forms: playing the player</h3>
-      <p style="margin-top:0.8rem">The forms so far respond to what the enemy does. The advanced ones anticipate what the enemy will do — each is built around a response it deliberately provokes, and holds the answer to it in advance.</p>
+      <p style="margin-top:0.8rem">The forms so far respond to what the enemy does. The advanced ones anticipate what the enemy will do. Each advanced form tries to provoke a predictable response, then uses the next movement to punish that response.</p>
       <p>That is why they need timing and a feel for how ordinary players react when their aim is under pressure. The three below are the ones the original guide works through, each shown with the situation it is for. Notice the signature of all three: the enemy's change of direction is predictable, and you are still, technically, strafe aiming.</p>
     </div>
     <div class="stack">
       <div class="panel">
         <div class="panel-head"><span>Probing</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">The general habit behind these: test the opponent, press where they are weak, step back where they are solid. When you move in a way that is hard to aim at, they will use their own movement to make aiming easier — at which point you chose their movement for them.</p>
+          <p style="font-size:var(--step--1); margin:0">The general habit behind these: test the opponent, press where they are weak, step back where they are solid. When you move in a way that is hard to aim at, they will use their own movement to make aiming easier. Once they start moving to make their own aim easier, their response becomes easier for you to predict.</p>
         </div>
       </div>
     </div>
@@ -591,15 +588,15 @@
   <div class="wrap plate" style="margin-top:3.5rem">
     <div class="plate-text">
       <h3 class="h-sub">Calm is a technique, not a temperament</h3>
-      <p style="margin-top:0.8rem">Most players badly overestimate what their opponent can do. In most moments the enemy's options are few and their outcomes span a small range. The players who seem supernaturally calm are mostly players who have made their own picture easier to read: they strafe aim, so the target moves slowly on their screen; they position well, so it has fewer options; they push at chosen moments, so its responses are predictable.</p>
-      <p>Panic works the other way round. Spam your keys, jump constantly and flick at shadows, and the picture on your own screen becomes fast, erratic and unreadable — and then you play like it. Simplify what you do and you simplify what you see.</p>
+      <p style="margin-top:0.8rem">Calm play becomes easier when the fight itself is easier to read. If your movement keeps the target slow on your screen, your position removes some of their escape routes, and you engage at a moment you chose, there are simply fewer things you need to react to.</p>
+      <p>Panic creates the opposite problem. Spam movement keys, jump constantly, and flick at every change, and you make your own screen faster and less predictable. Then you have to process the chaos you created yourself. Simplifying your movement can simplify what you see.</p>
       <p>The catch is that calm play does not feel like doing anything. Holding a long strafe, or keeping the mouse still at the centre of their dodge, can be the best move available and still feel passive. Confidence in these plays only comes from having seen them work, which is what practice is for.</p>
     </div>
     <div class="stack">
       <div class="panel">
         <div class="panel-head"><span>Watching better players</span></div>
         <div class="panel-body">
-          <p style="font-size:var(--step--1); margin:0">Playing against stronger players is worth more than copying them. And when you do watch top players, do not analyse details — absorb the overall feel of their fights and try to reproduce that.</p>
+          <p style="font-size:var(--step--1); margin:0">Playing against stronger players usually teaches you more than copying isolated movements from their clips. And when you do watch top players, do not analyse details — absorb the overall feel of their fights and try to reproduce that.</p>
         </div>
       </div>
     </div>
@@ -614,7 +611,7 @@
       <p style="margin-top:1.4rem">Tying movement to aim takes a long time, and no one should expect it to come quickly. Two principles carry most of the weight.</p>
       <p><strong>Practise one thing at a time, deliberately.</strong> Pick the thing this session is for — a form, drifting while you dodge, taking an angle — and think about it actively while you play. One-versus-one modes suit this: every round has a pause in which to decide what the next one is testing.</p>
       <p><strong>Find somewhere you do not mind looking bad.</strong> An alias, an unranked queue, anything. The practice that improves you is the practice where you try things that do not work yet, and you will not try them where the result matters to you.</p>
-      <p class="dim" style="font-size:var(--step--1)">One habit worth stealing: bind an aim-bot to your fire key in an aim trainer's free play, and move alongside it. The bot has perfect mouse control, so it shows you exactly what the mouse is supposed to do for the form you are learning — the fastest way there is to build a feel for a new one.</p>
+      <p class="dim" style="font-size:var(--step--1)">One habit worth stealing: bind an aim-bot to your fire key in an aim trainer's free play, and move alongside it. The bot has perfect mouse control, so it shows you what the mouse movement for the form you are learning should feel like. This can be a useful way to build a feel for a new one.</p>
     </div>
     <div class="stack">
       <div class="panel">
@@ -646,7 +643,8 @@
   <div class="wrap">
     <div class="plate-text">
       <h2 class="h-sec">The lab</h2>
-      <p style="margin-top:1.4rem">Every form, both players' skills adjustable, either camera, nothing decided for you. Two numbers are worth watching: the trade, and the worst gap per change of direction. A form that improves your gap while leaving the trade level is not doing anything for you.</p>
+      <p style="margin-top:1.4rem">The lab lets you change either player's skill, swap cameras, and test every form directly. Watch two things: how large your worst correction becomes after a reversal, and who wins the trade overall.</p>
+      <p>A smaller correction is not automatically an advantage. If the same form also makes the enemy's aim easier, you may simply have made the fight easier for both players.</p>
     </div>
   </div>
   <div class="wrap" style="margin-top:2rem">
@@ -743,7 +741,7 @@
   <div class="wrap plate">
     <div class="plate-text">
       <h2 class="h-sub">Take this away</h2>
-      <p style="font-size:var(--step-1); line-height:1.45">Your keyboard changes the amount of aiming your mouse has to do. You cannot react sooner — but before every reversal, your feet have already decided how big the correction will be, which skill the fight is testing, and where you will be standing when it ends. Choose all three on purpose.</p>
+      <p style="font-size:var(--step-1); line-height:1.45">Your keyboard changes the amount of aiming your mouse has to do. You cannot remove reaction delay — but before every reversal, your feet have already decided how big the correction will be, which skill the fight is testing, and where you will be standing when it ends. Choose all three on purpose.</p>
     </div>
     <div class="stack">
       <div class="panel">

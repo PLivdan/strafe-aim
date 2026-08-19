@@ -106,9 +106,10 @@ function wireNav() {
     for (const s of sections) if (seen.has(s.id)) { active = s.id; break; }
     for (const [id, a] of byId) a.classList.toggle('active', id === active);
     // Keep the active link in view by scrolling the bar itself — never the
-    // page, which scrollIntoView would happily do on our behalf.
+    // page, which scrollIntoView would happily do on our behalf. Links in
+    // the More menu are not in the scroller, so they are left alone.
     const a = active && byId.get(active);
-    const bar = (a || links[0])?.parentElement;
+    const bar = (a || links[0])?.closest('.tocbar-links');
     if (bar) {
       // With no section active the reader is at the masthead, so the bar
       // belongs back at its start rather than wherever it was last left.
@@ -134,10 +135,23 @@ function wireReveal() {
   targets.forEach((t) => io.observe(t));
 }
 
+/** The More menu closes when a destination inside it is chosen. */
+function wireMore() {
+  const more = $('.tocmore');
+  if (!more) return;
+  more.addEventListener('click', (e) => {
+    if (e.target.closest('a')) more.removeAttribute('open');
+  });
+  document.addEventListener('click', (e) => {
+    if (more.hasAttribute('open') && !more.contains(e.target)) more.removeAttribute('open');
+  });
+}
+
 function boot() {
   wireTerms();
   mountAll();
   wireNav();
+  wireMore();
   wireReveal();
 }
 

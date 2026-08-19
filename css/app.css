@@ -956,3 +956,32 @@ table.matrix td.on { box-shadow: 0 0 0 2px var(--ink); }
    wrap, or one long name pushes its whole panel out of the page. */
 .readout .val { white-space: normal; overflow-wrap: break-word; min-width: 0; }
 .readout .val small { white-space: nowrap; }
+
+/* ── the More menu in the sticky nav ──────────────────────────────────── */
+/* Six sections carry the beginner path; everything else sits behind one
+   control, so the bar communicates the same hierarchy the body does. */
+.tocmore { position: relative; flex: none; }
+.tocmore > summary {
+  cursor: pointer; list-style: none;
+  font-family: var(--mono); font-size: var(--step--2); letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--ink-3);
+  padding-block: 0.15rem; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 0.35em;
+}
+.tocmore > summary::-webkit-details-marker { display: none; }
+.tocmore > summary::after { content: '▾'; font-size: 0.85em; }
+.tocmore > summary:hover, .tocmore[open] > summary { color: var(--ink); }
+.tocmore-menu {
+  position: absolute; right: 0; top: calc(100% + 0.55rem);
+  display: grid; min-width: 11rem;
+  background: var(--stock-2); border: 1px solid var(--rule-hard);
+  border-radius: var(--radius); box-shadow: var(--shadow-panel);
+  padding: 0.35rem; z-index: 30;
+}
+.tocmore-menu a {
+  font-family: var(--mono); font-size: var(--step--2); letter-spacing: 0.09em;
+  text-transform: uppercase; color: var(--ink-2); text-decoration: none;
+  padding: 0.4rem 0.6rem; border-radius: 2px; border-bottom: 0;
+}
+.tocmore-menu a:hover { background: var(--stock-3); color: var(--ink); }
+.tocmore-menu a.active { color: var(--ink); }
