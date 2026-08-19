@@ -321,15 +321,16 @@ export function compareForms(node) {
   const body = el('tbody');
   const status = el('p', { class: 'dim', style: { fontSize: 'var(--step--2)', fontFamily: 'var(--mono)', margin: '0.6rem 0 0' } }, 'running…');
 
+  // Both players run identical settings here on purpose, so a per-row trade
+  // column could only ever read even plus noise. The interesting number is
+  // the level the pair sits at, which is why there is one column for it.
   const table = el('table.data',
     el('thead', el('tr',
       el('th', 'Form'),
       el('th', 'Keys'),
       el('th', 'Across your screen'),
       el('th', 'Directed'),
-      el('th', 'You hit'),
-      el('th', 'They hit'),
-      el('th', 'Trade'),
+      el('th', 'Time on target (you / them)'),
     )),
     body,
   );
@@ -339,7 +340,7 @@ export function compareForms(node) {
       el('div.panel-head', el('span', 'Eight forms, twenty seconds each'), el('span', 'simulated')),
       el('div.panel-body', el('div.scroll-x', table), status),
     ),
-    el('p.fig-cap', el('b', 'Both modeled players have the same reaction time and the same settings.'), ' Rows near even mean the form made the exchange symmetric. Lopsided rows mean one player\u2019s settings mattered more under that form. None of this predicts a real match.'),
+    el('p.fig-cap', el('b', 'Both modeled players have identical settings here, on purpose.'), ' With equal players, every form comes out close to even, and that is the point: no form hands you accuracy by itself. What changes from row to row is the level both players sit at, from nearly always on target under mirroring to a fraction of that under anti-mirroring. To see what happens when the players are not equal, use the figure above.'),
   ));
 
   // Run it after paint so a long section does not block the scroll.
@@ -347,18 +348,15 @@ export function compareForms(node) {
     for (const id of FUNDAMENTAL) {
       const f = makeForm(id);
       const r = trial(f, 20, 6);
-      const diff = r.you - r.him;
       body.appendChild(el('tr',
         el('td', f.name + (f.variant ? ` (${f.variant})` : '')),
         el('td', `${DIR[f.onLeft].keys} / ${DIR[f.onRight].keys}`),
         el('td', f.across.toFixed(2)),
         el('td', el('span', { class: `tag ${f.directed === 'inward' ? 'good' : f.directed === 'outward' ? 'bad' : 'mixed'}` }, f.directed)),
-        el('td', `${Math.round(r.you * 100)}%`),
-        el('td', `${Math.round(r.him * 100)}%`),
-        el('td', Math.abs(diff) < 0.04 ? el('span.tag.even', 'even') : el('span', { class: `tag ${diff > 0 ? 'good' : 'bad'}` }, `${diff > 0 ? '+' : ''}${Math.round(diff * 100)}`)),
+        el('td', `${Math.round(r.you * 100)}% / ${Math.round(r.him * 100)}%`),
       ));
     }
-    status.textContent = 'Same dodge, same seed, both modeled players reacting in 200 ms. The trade column is modeled time on target, yours minus theirs.';
+    status.textContent = 'Same dodge, same seed, identical settings on both sides. Small differences between the two percentages are noise, not an advantage.';
   }, 30));
 }
 

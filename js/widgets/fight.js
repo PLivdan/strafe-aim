@@ -42,6 +42,7 @@ export function biasFigure(node) {
   });
   let d = sim();
   const history = [];
+  const view = { cx: 8, cy: 0, span: 46 };
 
   function reset() { d = sim(); history.length = 0; }
 
@@ -88,13 +89,32 @@ export function biasFigure(node) {
     const cssW = canvas.parentElement.clientWidth || 460;
     const { ctx, w, h } = fitCanvas(canvas, cssW, 260);
     ctx.fillStyle = C.scope; ctx.fillRect(0, 0, w, h);
-    const scale = Math.min(w, h * 1.7) / 46;
-    const X = (x) => w / 2 + (x - 8) * scale;
-    const Y = (y) => h / 2 - y * scale;
+
+    // The camera fits everything the figure is about: both players and the
+    // whole recorded track. A drifting or circling enemy used to walk
+    // straight out of a fixed frame; now the frame follows, smoothly enough
+    // that the motion still reads as theirs rather than the camera's.
+    let minX = Math.min(s.you.x, s.him.x), maxX = Math.max(s.you.x, s.him.x);
+    let minY = Math.min(s.you.y, s.him.y), maxY = Math.max(s.you.y, s.him.y);
+    for (let i = 0; i < history.length; i += 3) {
+      if (history[i] < minX) minX = history[i]; else if (history[i] > maxX) maxX = history[i];
+      if (history[i + 1] < minY) minY = history[i + 1]; else if (history[i + 1] > maxY) maxY = history[i + 1];
+    }
+    const ratio = h / w;
+    const want = Math.max(30, maxX - minX + 8, (maxY - minY + 5) / ratio);
+    view.cx += ((minX + maxX) / 2 - view.cx) * 0.1;
+    view.cy += ((minY + maxY) / 2 - view.cy) * 0.1;
+    view.span += (want - view.span) * 0.08;
+    const scale = w / view.span;
+    const X = (x) => w / 2 + (x - view.cx) * scale;
+    const Y = (y) => h / 2 - (y - view.cy) * scale;
 
     ctx.strokeStyle = alpha('#ffffff', 0.05);
     ctx.beginPath();
-    for (let g = -40; g <= 60; g += 5) { ctx.moveTo(X(g), 0); ctx.lineTo(X(g), h); ctx.moveTo(0, Y(g)); ctx.lineTo(w, Y(g)); }
+    const g0x = Math.floor((view.cx - view.span / 2) / 5) * 5;
+    const g0y = Math.floor((view.cy - view.span * ratio / 2) / 5) * 5;
+    for (let g = g0x; g < view.cx + view.span / 2 + 5; g += 5) { ctx.moveTo(X(g), 0); ctx.lineTo(X(g), h); }
+    for (let g = g0y; g < view.cy + view.span * ratio / 2 + 5; g += 5) { ctx.moveTo(0, Y(g)); ctx.lineTo(w, Y(g)); }
     ctx.stroke();
 
     for (let i = 3; i < history.length; i += 3) {
