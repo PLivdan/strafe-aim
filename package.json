@@ -1,0 +1,15 @@
+{
+  "name": "strafe-aim",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Strafe Aiming: a visual, simulated guide to moving while you aim in first-person shooters",
+  "keywords": ["fps", "aim", "strafe", "tracking", "movement", "quake", "apex", "overwatch", "visualisation"],
+  "license": "MIT",
+  "scripts": {
+    "dev": "node tools/serve.js 5174",
+    "start": "node tools/serve.js 5174",
+    "test": "node --test test/*.test.js"
+  },
+  "engines": { "node": ">=18" }
+}
