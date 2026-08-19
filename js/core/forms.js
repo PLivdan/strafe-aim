@@ -187,15 +187,15 @@ function driftOf(onLeft, onRight) {
 export const CATALOGUE = {
   // ── the eight fundamental (180) forms, §2.2 ──────────────────────────
   'R/L':   { name: 'Mirroring', family: 'mirroring', tier: 'fundamental',
-             note: 'You press the opposite keys to his, so you both travel the same way through the world and neither of you appears to move.' },
+             note: 'You press the opposite keys to theirs, so you both travel the same way through the world and neither of you appears to move.' },
   'L/R':   { name: 'Anti-mirroring', family: 'anti-mirroring', tier: 'fundamental',
-             note: 'You press the same keys he does, so you travel opposite ways and the relative speed is the highest there is.' },
+             note: 'You press the same keys they do, so you travel opposite ways and the relative speed is the highest there is.' },
   'FL/BR': { name: 'Half-sideways anti-mirroring', variant: 'front-left', family: 'anti-mirroring', tier: 'fundamental',
-             note: 'The anti-mirror pulled onto a diagonal: still opposing him across the sight line, but now also opening and closing the range.' },
+             note: 'The anti-mirror pulled onto a diagonal: still opposing them across the sight line, but now also opening and closing the range.' },
   'BL/FR': { name: 'Half-sideways anti-mirroring', variant: 'back-left', family: 'anti-mirroring', tier: 'fundamental',
              note: 'The mirror image of the other half-sideways anti-mirror.' },
   'FR/BL': { name: 'Half-sideways mirroring', variant: 'front-right', family: 'mirroring', tier: 'fundamental',
-             note: 'Almost cancels him. The target is nearly motionless, which is exactly why it is the hardest one to read.' },
+             note: 'Almost cancels their movement. The target is nearly motionless, which is exactly why it is the hardest one to read.' },
   'BR/FL': { name: 'Half-sideways mirroring', variant: 'back-right', family: 'mirroring', tier: 'fundamental',
              note: 'The mirror image of the other half-sideways mirror.' },
   'F/B':   { name: 'Back and forth', variant: 'forward first', family: 'mixed', tier: 'fundamental',
@@ -205,26 +205,26 @@ export const CATALOGUE = {
 
   // ── the 90 building blocks, §3.1 ─────────────────────────────────────
   'FR/FL': { name: 'Forward triangle', variant: 'mirroring', family: 'mirroring', tier: 'block',
-             note: 'Both halves push in. It cannot be repeated forever because you arrive.' },
+             note: 'Both halves push in. You cannot repeat it forever, because you eventually reach them.' },
   'FL/FR': { name: 'Forward triangle', variant: 'anti-mirroring', family: 'anti-mirroring', tier: 'block' },
   'BR/BL': { name: 'Backward triangle', variant: 'mirroring', family: 'mirroring', tier: 'block',
-             note: 'Both halves back out. It cannot be repeated forever because you leave.' },
+             note: 'Both halves back away. You cannot repeat it forever, because you eventually leave the fight.' },
   'BL/BR': { name: 'Backward triangle', variant: 'anti-mirroring', family: 'anti-mirroring', tier: 'block' },
   'FR/BR': { name: 'Back-and-forth triangle', variant: 'clockwise, right', family: 'mixed', tier: 'block',
-             note: 'Both halves carry right. Held properly the ground track is a circle around him, and your crosshair stays on its centre.' },
+             note: 'Both halves carry you to the right. Held properly, your path on the ground is a circle around the enemy, and your crosshair stays pointed at its centre.' },
   'BR/FR': { name: 'Back-and-forth triangle', variant: 'anticlockwise, right', family: 'mixed', tier: 'block' },
   'FL/BL': { name: 'Back-and-forth triangle', variant: 'anticlockwise, left', family: 'mixed', tier: 'block' },
   'BL/FL': { name: 'Back-and-forth triangle', variant: 'clockwise, left', family: 'mixed', tier: 'block' },
 
   // ── named advanced forms, §3.2 ───────────────────────────────────────
   'FR/B':  { name: 'Back to forward-hsw', variant: 'right', family: 'mirroring', tier: 'advanced',
-             note: 'Backward as he goes right, forward-right as he goes left. Close range, and it turns his own change of direction outward-directed.' },
+             note: 'Backward as they go right, forward-right as they go left. Used at close range, it turns their own change of direction against them.' },
   'FL/B':  { name: 'Back to forward-hsw', variant: 'left', family: 'mirroring', tier: 'advanced' },
   'FR/L':  { name: 'Forward-hsw to mirroring', variant: 'right', family: 'mirroring', tier: 'advanced',
-             note: 'One of the best ways to push someone: the half-sideways half is brutal on his precision, and the mirror half punishes the direction change it provokes.' },
+             note: 'One of the best ways to push someone: the half-sideways half is brutal on their precision, and the mirror half punishes the direction change it provokes.' },
   'FL/R':  { name: 'Forward-hsw to mirroring', variant: 'left', family: 'mirroring', tier: 'advanced' },
   'R/B':   { name: 'Back to right mirroring rectangle', family: 'mirroring', tier: 'advanced',
-             note: 'Backward while he goes right, right while he goes left. He must flick left and stop dead on you, because by then you are mirroring.' },
+             note: 'Backward while they go right, right while they go left. They must flick left and stop the flick exactly on you, because by then you are mirroring.' },
   'L/B':   { name: 'Back to left mirroring rectangle', family: 'anti-mirroring', tier: 'advanced' },
 };
 

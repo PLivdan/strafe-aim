@@ -33,12 +33,12 @@ export function ruleGame(node) {
   });
   fig.sim.setStrafeAiming(false);
 
-  const rAsked = readout('He changed direction', { unit: '×' });
+  const rAsked = readout('They changed direction', { unit: '×' });
   const rAnswered = readout('You answered');
-  const rUnprompted = readout('Changes he never asked for', { unit: '×' });
+  const rUnprompted = readout('Changes they never asked for', { unit: '×' });
   const rLag = readout('Your average lag', { unit: 'ms' });
   const verdict = el('p', { class: 'dim', style: { margin: '0.6rem 0 0', fontSize: 'var(--step--1)' } },
-    'Press ← and → (or A and D). Change direction when he does, and only then.');
+    'Press ← and → (or A and D). Change direction when they do, and only then.');
 
   let lastHisSide = null, pendingAnswer = null;
 
@@ -57,12 +57,12 @@ export function ruleGame(node) {
     rLag.set(score.late.length ? String(Math.round(avg(score.late) * 1000)) : '—', score.late.length ? 'ms' : '');
     const clean = score.asked >= 4 && score.answered / score.asked > 0.8 && score.unprompted <= 1;
     verdict.textContent = score.asked < 3
-      ? 'Press ← and → (or A and D). Change direction when he does, and only then.'
+      ? 'Press ← and → (or A and D). Change direction when they do, and only then.'
       : clean
         ? 'That is strafe aiming: every change answered, nothing invented.'
         : score.unprompted > score.asked * 0.4
           ? 'You are moving on your own initiative. Legitimate, sometimes excellent, but it is not strafe aiming.'
-          : 'Some of his changes went unanswered. The rule is every one of them.';
+          : 'Some of their changes went unanswered. The rule is every one of them.';
   }
 
   function press(want) {
@@ -86,10 +86,10 @@ export function ruleGame(node) {
   window.addEventListener('keydown', keyHandler);
 
   const buttons = el('div.bigkeys',
-    el('button', { type: 'button', onclick: () => press('R'), title: 'He is going left, so you go right' },
-      el('b', '←'), el('span', 'answer his left')),
-    el('button', { type: 'button', onclick: () => press('L'), title: 'He is going right, so you go left' },
-      el('b', '→'), el('span', 'answer his right')),
+    el('button', { type: 'button', onclick: () => press('R'), title: 'They are going left, so you go right' },
+      el('b', '←'), el('span', 'answer their left')),
+    el('button', { type: 'button', onclick: () => press('L'), title: 'They are going right, so you go left' },
+      el('b', '→'), el('span', 'answer their right')),
   );
 
   const reset = el('button.btn.ghost', { type: 'button', onclick: () => {
@@ -99,7 +99,7 @@ export function ruleGame(node) {
 
   node.appendChild(el('div.lab',
     el('div.lab-main', fig.node,
-      el('p.fig-cap', el('b', 'The rule has two halves and the score keeps them apart.'), ' Missing one of his changes is one kind of failure. Inventing one of your own is a different kind, and it is the one nobody counts.')),
+      el('p.fig-cap', el('b', 'The rule has two halves and the score keeps them apart.'), ' Missing one of their changes is one kind of failure. Inventing one of your own is a different kind, and it is the one nobody counts.')),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Your feet')), el('div.panel-body',
         buttons,
@@ -108,7 +108,7 @@ export function ruleGame(node) {
           options: [
             { value: 'R/L', label: 'Mirroring' },
             { value: 'L/R', label: 'Anti-mirroring' },
-            { value: 'FR/BL', label: 'Hsw mirroring' },
+            { value: 'FR/BL', label: 'Half-sideways mirror' },
           ],
           onchange: (v) => { formId = v; f = makeForm(v); fig.sim.setForm({ onLeft: f.onLeft, onRight: f.onRight }); },
         }),
@@ -135,7 +135,7 @@ export function shortDodge(node) {
   let dodge = 0.18;
   let left = null, right = null;
   const mount = el('div.lab-scopes');
-  const rLeft = readout('Chasing him', { swatch: 'blue' });
+  const rLeft = readout('Chasing them', { swatch: 'blue' });
   const rRight = readout('Sitting in the middle', { swatch: 'orange' });
   const advice = el('p', { class: 'dim', style: { margin: '0.6rem 0 0', fontSize: 'var(--step--1)' } });
 
@@ -156,21 +156,21 @@ export function shortDodge(node) {
     mount.appendChild(el('div.stack', left.node));
     mount.appendChild(el('div.stack', right.node));
     advice.textContent = dodge < 0.28
-      ? 'At this rate he reverses before you could have noticed the last one. Answering him is not physically available; the middle of his dodge is.'
+      ? 'At this rate they reverse before you could have noticed the last one. Answering them is not physically possible; aiming at the middle of their dodge is.'
       : dodge < 0.45
         ? 'Around here it is a genuine choice, and it depends on your reaction time rather than on principle.'
-        : 'Now the dodge is long enough to answer, and chasing him is worth more than waiting for him.';
+        : 'Now the dodge is long enough to answer, and following them is worth more than waiting for them.';
   }
 
   build();
   node.appendChild(el('div.stack',
     mount,
     el('div.lab',
-      el('div.lab-main', el('p.fig-cap', el('b', 'Same enemy, same seed, same second.'), ' The only difference is whether the crosshair is trying to follow him or waiting for him.')),
+      el('div.lab-main', el('p.fig-cap', el('b', 'Same enemy, same seed, same second.'), ' The only difference is whether the crosshair is trying to follow them or waiting for them.')),
       el('div.lab-side',
-        el('div.panel', el('div.panel-head', el('span', 'How fast he reverses')), el('div.panel-body',
+        el('div.panel', el('div.panel-head', el('span', 'How fast they reverse')), el('div.panel-body',
           slider({
-            label: 'He holds each direction for', min: 0.1, max: 0.9, step: 0.02, value: 0.18,
+            label: 'They hold each direction for', min: 0.1, max: 0.9, step: 0.02, value: 0.18,
             format: (v) => `${Math.round(v * 1000)} ms`,
             hint: 'Under about 250 ms this is what people call short-dodging or ad-spam.',
             oninput: (v) => { dodge = v; build(); },

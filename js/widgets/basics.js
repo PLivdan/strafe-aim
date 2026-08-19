@@ -34,12 +34,12 @@ export function hero(node) {
     monitorOpts: { smearFrames: 22 },
   });
 
-  const bad = duelFigure(spec('L/R', 'You: anti-mirroring'));
-  const good = duelFigure(spec('FR/BL', 'You: half-sideways mirroring'));
+  const bad = duelFigure({ ...spec('L/R', 'Fight one: you move against them'), formId: { onLeft: 'L', onRight: 'R', name: '' } });
+  const good = duelFigure({ ...spec('FR/BL', 'Fight two: you move with them'), formId: { onLeft: 'FR', onRight: 'BL', name: '' } });
 
   node.appendChild(el('div.lab-scopes',
-    el('div.stack', bad.node, el('p.fig-cap', el('b', 'Left.'), ' You press the same keys he does. He crosses your whole screen and your mouse has to go with him.')),
-    el('div.stack', good.node, el('p.fig-cap', el('b', 'Right.'), ' You press a diagonal into him. Same enemy, same speed, and he has almost stopped moving.')),
+    el('div.stack', bad.node, el('p.fig-cap', el('b', 'Fight one.'), ' Your movement opposes theirs. They cross your whole screen, and your mouse has to travel with them.')),
+    el('div.stack', good.node, el('p.fig-cap', el('b', 'Fight two.'), ' Your movement travels with theirs. Same enemy, same speed, and they have almost stopped moving.')),
   ));
 }
 
@@ -65,9 +65,9 @@ export function reactivityClock(node) {
   const mount = el('div');
   const FORMS = [
     { value: '-/-', label: 'Stand still' },
-    { value: 'R/L', label: 'Mirroring' },
-    { value: 'FR/BL', label: 'Hsw mirroring' },
-    { value: 'L/R', label: 'Anti-mirroring' },
+    { value: 'R/L', label: 'Move with them' },
+    { value: 'FR/BL', label: 'With them, diagonally' },
+    { value: 'L/R', label: 'Move against them' },
   ];
   let current = '-/-';
 
@@ -108,7 +108,7 @@ export function reactivityClock(node) {
     slider({
       label: 'Your reaction time', min: 100, max: 320, step: 10, value: 200,
       format: (v) => `${v} ms`,
-      hint: 'How long before you notice he turned. Nothing happens during it.',
+      hint: 'How long before you notice they turned. Nothing happens during it.',
       oninput: (v) => { params.react = v / 1000; fig.sim.setParam('react', v / 1000); },
     }),
     slider({
@@ -129,7 +129,7 @@ export function reactivityClock(node) {
   node.appendChild(el('div.lab',
     el('div.lab-main', mount,
       el('div.scope', el('div.scope-head', el('span', 'The last change of direction, measured'), el('b', 'reactivity')), barCanvas),
-      el('p.fig-cap', el('b', 'Read it left to right.'), ' The clock starts when he changes direction. The first block is time you were off him and had not noticed. The second is the mouse travelling back. Only the second block responds to what you are pressing.'),
+      el('p.fig-cap', el('b', 'Read it left to right.'), ' The clock starts when the enemy changes direction. The first block is time you were off them without knowing it. The second is the mouse travelling back. Only the second block responds to what you are pressing.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Controls')), el('div.panel-body', controls)),
@@ -156,7 +156,7 @@ function drawBar(canvas, s, params) {
     ctx.fillText(`${Math.round(t * 1000)}`, X(t), y + bh + 20);
   }
   ctx.textAlign = 'left';
-  ctx.fillText('ms since he changed direction', 14, h - 6);
+  ctx.fillText('ms since they changed direction', 14, h - 6);
 
   if (!r) return;
   const seg = (t0, t1, color, label) => {
@@ -180,7 +180,7 @@ function drawBar(canvas, s, params) {
   ctx.lineWidth = 2;
   ctx.beginPath(); ctx.moveTo(X(r.total), y - 6); ctx.lineTo(X(r.total), y + bh + 6); ctx.stroke();
   ctx.font = MONO(9.5, 600); ctx.fillStyle = C.greenLit;
-  ctx.fillText('back on him', Math.min(w - 90, X(r.total) + 5), y + bh + 4);
+  ctx.fillText('back on them', Math.min(w - 90, X(r.total) + 5), y + bh + 4);
 }
 
 /* ═════════════════════════════════════════════════ reading demo ══════ */
@@ -201,7 +201,7 @@ export function readingDemo(node) {
 
   const controls = el('div.controls',
     slider({
-      label: 'How fast he changes direction', min: 0.4, max: 6, step: 0.1, value: 1.2,
+      label: 'How fast they change direction', min: 0.4, max: 6, step: 0.1, value: 1.2,
       format: (v) => `${v.toFixed(1)}/s`,
       hint: 'A long dodge is about one per second. Short-dodging is four or five.',
       oninput: (v) => { state.dodge = v; },
@@ -209,7 +209,7 @@ export function readingDemo(node) {
     slider({
       label: 'How fast you refresh the picture', min: 3, max: 24, step: 1, value: 12,
       format: (v) => `${v}/s`,
-      hint: 'Not your reaction time. How often you actually re-read where the crosshair is against him.',
+      hint: 'Not your reaction time. How often you actually re-read where the crosshair sits against them.',
       oninput: (v) => { state.refresh = v; },
     }),
   );
@@ -220,7 +220,7 @@ export function readingDemo(node) {
         el('div.scope-head', el('span', 'What is there, and what you have'), el('b', 'reading')),
         canvas,
       ),
-      el('p.fig-cap', el('b', 'Top:'), ' where he actually is. ', el('b', 'Bottom:'), ' the last picture you took, held until you take the next one. When the two stop resembling each other you are aiming at a memory.'),
+      el('p.fig-cap', el('b', 'Top:'), ' where they actually are. ', el('b', 'Bottom:'), ' the last picture you took, held until you take the next one. When the two stop resembling each other you are aiming at a memory.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Controls')), el('div.panel-body', controls)),
@@ -247,7 +247,7 @@ export function readingDemo(node) {
       ctx.fillText(label, 20, y - 22);
     };
 
-    lane(46, 'where he is');
+    lane(46, 'where they are');
     ctx.fillStyle = C.red;
     ctx.fillRect(cx + pos - 9, 46 - 16, 18, 46);
 
@@ -271,7 +271,7 @@ export function readingDemo(node) {
     ctx.font = MONO(9.5, 500);
     ctx.fillStyle = blur > 40 ? C.yellowLit : alpha(C.scopeInk2, 0.8);
     ctx.fillText(verdict === 'unreadable'
-      ? 'you cannot tell which way he is going'
+      ? 'you cannot tell which way they are going'
       : verdict === 'smearing' ? 'the picture arrives already stale' : 'the picture keeps up', 20, h - 12);
   });
 }
@@ -299,7 +299,7 @@ export function directionWheel(node) {
   const rView = readout('Your view-angle', { unit: '°' });
   const rAcross = readout('You, across the sight line', { unit: 'ups' });
   const rAlong = readout('You, along it', { unit: 'ups' });
-  const rRel = readout('He crosses your screen at', { unit: 'ups', big: true });
+  const rRel = readout('They cross your screen at', { unit: 'ups', big: true });
   const rDir = readout('This change is');
 
   const keyButtons = DIRS.map((d) => el('button', {
@@ -309,8 +309,8 @@ export function directionWheel(node) {
   }, el('b', d.keys), el('span', d.short)));
 
   const sideSeg = segmented({
-    label: 'He is going', value: his,
-    options: [{ value: 'L', label: 'his left (right on your screen)' }, { value: 'R', label: 'his right (left on your screen)' }],
+    label: 'They are going', value: his,
+    options: [{ value: 'L', label: 'their left (right on your screen)' }, { value: 'R', label: 'their right (left on your screen)' }],
     onchange: (v) => { his = v; sync(); },
   });
 
@@ -321,11 +321,11 @@ export function directionWheel(node) {
         canvas,
         el('div.scope-foot',
           el('span', el('i', { class: 'swatch sw-blue' }), ' your keys'),
-          el('span', el('i', { class: 'swatch sw-red' }), ' his keys'),
+          el('span', el('i', { class: 'swatch sw-red' }), ' their keys'),
           el('span', 'the dashed line is the sight line'),
         ),
       ),
-      el('p.fig-cap', el('b', 'Try every key.'), ' Watch the relative speed at the bottom right. Two of the eight leave him nearly motionless on your screen, two make him cross it at twice his own speed, and the rest are in between.'),
+      el('p.fig-cap', el('b', 'Try every key.'), ' Watch the relative speed at the bottom right. Two of the eight keys leave the enemy nearly motionless on your screen, two make them cross it at twice their own speed, and the rest are in between.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'You are holding')), el('div.panel-body',
@@ -422,4 +422,60 @@ export function directionWheel(node) {
 
   sync();
   window.addEventListener('resize', () => draw());
+}
+
+/* ═══════════════════════════════════════════════ with or against ═════ */
+/**
+ * The first discovery, before any name is attached to it.
+ *
+ * The enemy dodges left and right. The reader has exactly two choices: move
+ * the same way through the world, or the opposite way. Everything the rest
+ * of the page builds on is visible in the difference, and no term has been
+ * introduced yet.
+ */
+export function withAgainst(node) {
+  let mode = 'with';
+  let fig = null;
+  const mount = el('div');
+
+  function build() {
+    if (fig) fig.stop();
+    mount.innerHTML = '';
+    fig = duelFigure({
+      formId: mode === 'with'
+        ? { onLeft: 'R', onRight: 'L', name: 'moving with them' }
+        : { onLeft: 'L', onRight: 'R', name: 'moving against them' },
+      dodge: 'metronome', seed: 6, params: { range: 16 },
+      title: 'Same enemy, same dodge',
+      aspect: 0.42, monitorAspect: 0.42, span: 22,
+      readouts: ['across', 'accuracy'],
+      monitorOpts: { smearFrames: 22 },
+    });
+    mount.appendChild(fig.node);
+  }
+
+  const seg = segmented({
+    value: mode,
+    options: [
+      { value: 'with', label: 'Move with them', title: 'Travel the same way through the world as they do' },
+      { value: 'against', label: 'Move against them', title: 'Travel the opposite way' },
+    ],
+    onchange: (v) => { mode = v; build(); },
+  });
+
+  build();
+  node.appendChild(el('div.lab',
+    el('div.lab-main', mount),
+    el('div.lab-side',
+      el('div.panel', el('div.panel-head', el('span', 'Your choice')), el('div.panel-body',
+        seg,
+        el('p', { class: 'dim', style: { fontSize: 'var(--step--1)', margin: '0.8rem 0 0' } },
+          'The enemy dodges left and right on their own. You only decide one thing: when they move, do you travel the same way through the world, or the opposite way?'),
+      )),
+      el('div.panel', el('div.panel-head', el('span', 'Watch one number')), el('div.panel-body',
+        el('p', { style: { fontSize: 'var(--step--1)', margin: 0 } },
+          el('strong', 'How fast they cross your screen.'), ' Ignore accuracy for now. Switch between the two choices a few times and watch what happens to that speed — and to the red smear on the monitor.'),
+      )),
+    ),
+  ));
 }

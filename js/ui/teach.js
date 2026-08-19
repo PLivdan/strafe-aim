@@ -3,7 +3,7 @@
  *
  * Three editorial rules are enforced here rather than left to each widget:
  *
- *   1. Plain language first. A teaching figure says "he barely crosses your
+ *   1. Plain language first. A teaching figure says "they barely cross your
  *      screen" with a bar. The exact units per second sit behind a disclosure.
  *   2. Both cameras, always. Every figure can be swapped, because a fight has
  *      two monitors and the whole point of a form is what it does to his.
@@ -21,14 +21,14 @@ import { el } from './dom.js';
  */
 export const TERMS = {
   strafeaim: {
-    name: 'strafe aiming', plain: 'change direction when he does',
+    name: 'strafe aiming', plain: 'change direction when they do',
     tip: 'Changing your own direction whenever, and only whenever, the target changes his.',
-    ask: 'Did he just turn? Then so do I, and not otherwise.',
+    ask: 'Did they just turn? Then so do I, and not otherwise.',
   },
   form: {
     name: 'strafe aim form', plain: 'a pair of keys',
-    tip: 'Which key you hold while he goes left, and which you hold while he goes right. That pair is the whole form.',
-    ask: 'What am I holding for each of his two directions?',
+    tip: 'Which key you hold while the enemy goes left, and which you hold while they go right. That pair is the whole form.',
+    ask: 'What am I holding for each of their two directions?',
   },
   viewangle: {
     name: 'view-angle', plain: 'where the crosshair points',
@@ -36,14 +36,14 @@ export const TERMS = {
     ask: 'Where am I looking, and so where does W actually go?',
   },
   relative: {
-    name: 'relative speed', plain: 'how fast he crosses your screen',
-    tip: 'The part of your speed and his that runs across the line of sight, added together. It is what your mouse has to follow.',
-    ask: 'How fast does the body slide, not how fast does he run?',
+    name: 'relative speed', plain: 'how fast they cross your screen',
+    tip: 'The part of your speed and theirs that runs across the line of sight, added together. It is what your mouse has to follow.',
+    ask: 'How fast does the body slide across my screen, not how fast do they run?',
   },
   inward: {
     name: 'inward-directed', plain: 'the gap closes',
     tip: 'A change of direction that shrinks the distance between crosshair and body while you are correcting.',
-    ask: 'Does my new direction follow him across, or fight him?',
+    ask: 'Does my new direction follow them across the screen, or fight them?',
   },
   outward: {
     name: 'outward-directed', plain: 'the gap opens',
@@ -52,8 +52,8 @@ export const TERMS = {
   },
   reactivity: {
     name: 'reactivity', plain: 'notice, then fix',
-    tip: 'The time from him changing direction to your crosshair being back on him. Two parts: noticing, and correcting.',
-    ask: 'How long was I off him, and which half was the problem?',
+    tip: 'The time from their change of direction to your crosshair being back on them. Two parts: noticing, and correcting.',
+    ask: 'How long was I off them, and which half was the problem?',
   },
   reading: {
     name: 'reading', plain: 'seeing where things are',
@@ -73,12 +73,12 @@ export const TERMS = {
   hsw: {
     name: 'half-sideways', plain: 'on a diagonal',
     tip: 'A form built on the diagonals, so only part of your speed runs across the sight line and the rest opens or closes the range.',
-    ask: 'Is my movement across him, or partly towards him?',
+    ask: 'Is my movement across the enemy, or partly towards them?',
   },
   longdodge: {
     name: 'long dodge', plain: 'keep going',
-    tip: 'Holding a direction through his change of direction instead of answering it. Legitimate movement, but it is not strafe aiming.',
-    ask: 'Am I answering him, or going my own way?',
+    tip: 'Holding a direction through their change of direction instead of answering it. Legitimate movement, but it is not strafe aiming.',
+    ask: 'Am I answering them, or going my own way?',
   },
 };
 

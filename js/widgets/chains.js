@@ -106,7 +106,7 @@ export function connectionMap(node) {
     ctx.beginPath(); ctx.arc(SX(hi[0] + 4, midY), SY(hi[0] + 4, midY), 5, 0, Math.PI * 2); ctx.fill();
     ctx.font = MONO(9.5, 500); ctx.fillStyle = alpha(C.redLit, 0.85);
     ctx.textAlign = 'center';
-    ctx.fillText('towards him', SX(hi[0] + 4, midY), SY(hi[0] + 4, midY) - 12);
+    ctx.fillText('towards the enemy', SX(hi[0] + 4, midY), SY(hi[0] + 4, midY) - 12);
     ctx.textAlign = 'left';
 
     t.segments.forEach((seg) => {
@@ -131,7 +131,7 @@ export function connectionMap(node) {
   node.appendChild(el('div.lab',
     el('div.lab-main',
       el('div.scope', el('div.scope-head', el('span', 'The ground you cover'), el('b', 'the chain, walked')), canvas),
-      el('p.fig-cap', el('b', 'Each colour is one form'), ', held for two of his direction changes. Chain a forward triangle to a half-sideways mirror to a backward triangle and the track closes into a rhombus. Hold a back-and-forth triangle on its own and it closes into a circle around him.'),
+      el('p.fig-cap', el('b', 'Each colour is one form'), ', held for two of the enemy\u2019s direction changes. Chain a forward triangle to a half-sideways mirror to a backward triangle and the track closes into a rhombus. Hold a back-and-forth triangle on its own and it closes into a circle around them.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Your chain')), el('div.panel-body', chainEl)),
@@ -169,7 +169,7 @@ function nameShape(chain, drift) {
   if (chain.length === 1) {
     const f = chain[0];
     if (f.turn === 180) return 'a line, back and forth';
-    if (f.turn === 90 && f.tier === 'block' && f.name.startsWith('Back-and-forth')) return 'a circle around him';
+    if (f.turn === 90 && f.tier === 'block' && f.name.startsWith('Back-and-forth')) return 'a circle around the enemy';
     if (f.turn === 90) return 'a triangle, travelling';
     return 'a wedge, travelling';
   }
@@ -190,19 +190,19 @@ export function advancedCases(node) {
   const CASES = [
     {
       id: 'FR/B',
-      when: 'Close range, he is on your right, and he is swapping direction quickly.',
+      when: 'Close range, the enemy is on your right, and they are swapping direction quickly.',
       why: [
-        'Go backward as he goes right. Close in, that opens the angle to his left enormously and his crosshair falls behind you.',
-        'A crosshair that is behind wants help from movement, so he changes direction to your left to bring the relative speed up.',
-        'The moment he does, you push forward-right — into him and to his left. Because you are closing, his own change of direction has become outward-directed for him, and inward-directed for you.',
+        'Go backward as they go right. At close range that opens the angle to their left enormously, and their crosshair falls behind you.',
+        'A crosshair that is behind wants help from movement, so they change direction to your left to bring the relative speed up.',
+        'The moment they do, you push forward-right — towards them and to their left. Because you are closing the range, their own change of direction now works against them and for you.',
       ],
-      close: 'He turns his mouse a long way. You barely turn yours. He chose the change of direction and it still cost him.',
+      close: 'They turn their mouse a long way. You barely turn yours. They chose the change of direction and it still cost them.',
     },
     {
       id: 'FR/L',
       when: 'You want to push someone off a position without trading.',
       why: [
-        'The forward-right half is a half-sideways mirror: he is nearly motionless on your screen, which is heavy on precision for him and heavy on precision for you.',
+        'The forward-right half is a half-sideways mirror: the enemy is nearly motionless on your screen, which is heavy on precision for them and for you.',
         'Most people answer that by changing direction to raise the relative speed, because speed is where their mouse control lives.',
         'You answer their answer by going left, mirroring them. If you saw it coming, or caused it, they are already late.',
       ],
@@ -212,9 +212,9 @@ export function advancedCases(node) {
       id: 'R/B',
       when: 'You need to be somewhere else, and you would rather not be free damage on the way.',
       why: [
-        'While he goes right you go backward, so his mouse is tracking a ten-unit sweep to the left.',
-        'When he reverses, you go right — into his left. He has to flick left and stop dead on you, because from that moment you are mirroring him and the target is not moving.',
-        'A flick that has to stop exactly is the flick people miss. When he misses he will change direction to get the mouse moving again, and so should you.',
+        'While they go right you go backward, so their mouse is tracking a ten-unit sweep to the left.',
+        'When they reverse, you go right — towards their left. They have to flick left and stop the flick exactly on you, because from that moment you are mirroring them and the target is not moving.',
+        'A flick that has to stop exactly is the flick people miss. When they miss, they will change direction to get the mouse moving again — and so should you.',
       ],
       close: 'This is a repositioning form that happens to be inward-directed. Use it to go somewhere, not to stand still.',
     },

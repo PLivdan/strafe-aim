@@ -74,13 +74,13 @@ export function formExplorer(node, opts = {}) {
     else tagsEl.appendChild(el('span', { class: 'tag none' }, 'stays put'));
     noteEl.textContent = f.note || '';
     keysEl.innerHTML = '';
-    keysEl.appendChild(prescription('He goes left', f.onLeft, f.halves[0]));
-    keysEl.appendChild(prescription('He goes right', f.onRight, f.halves[1]));
+    keysEl.appendChild(prescription('They go left', f.onLeft, f.halves[0]));
+    keysEl.appendChild(prescription('They go right', f.onRight, f.halves[1]));
   }
 
   const controls = el('div.controls',
     segmented({
-      label: 'His dodge', value: dodgeKey,
+      label: 'Their dodge', value: dodgeKey,
       options: [
         { value: 'metronome', label: 'Metronome', title: 'Equal halves, so nothing drifts and the only difference between forms is your keys' },
         { value: 'long', label: 'Long dodge' },
@@ -104,7 +104,7 @@ export function formExplorer(node, opts = {}) {
   select(id);
   node.appendChild(el('div.lab',
     el('div.lab-main', fig.node,
-      el('p.fig-cap', el('b', 'Swap the camera.'), ' A form is a claim about two monitors. The half-sideways mirror that nearly freezes him on your screen is also nearly freezing you on his, and the question is always which of you that suits.')),
+      el('p.fig-cap', el('b', 'Swap the camera.'), ' A form is a claim about two monitors. The half-sideways mirror that nearly freezes the enemy on your screen is also nearly freezing you on theirs, and the question is always which of you that suits.')),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Pick a form')), el('div.panel-body', picker)),
       el('div.panel', el('div.panel-head', el('span', 'What you are holding')), el('div.panel-body',
@@ -142,11 +142,11 @@ export function formMatrix(node) {
   const cells = [];
   const table = el('table.matrix',
     el('thead', el('tr',
-      el('th', el('small', 'you hold →'), el('br'), 'while he goes right'),
+      el('th', el('small', 'you hold →'), el('br'), 'while they go right'),
       KEYS.map((k) => el('th', el('b', DIR[k].keys), el('small', DIR[k].short))),
     )),
     el('tbody', KEYS.map((a) => el('tr',
-      el('th', el('b', DIR[a].keys), el('small', `he goes left`)),
+      el('th', el('b', DIR[a].keys), el('small', `they go left`)),
       KEYS.map((b) => {
         if (a === b) return el('td', { class: 'nil', title: 'A form has to change direction' }, '—');
         const f = makeForm(`${a}/${b}`);
@@ -182,9 +182,9 @@ export function formMatrix(node) {
       f.tier !== 'other' ? el('span', { class: 'tag' }, f.tier) : null,
     ));
     detail.appendChild(el('div.readouts',
-      row('He goes left, you hold', `${DIR[f.onLeft].keys} — ${DIR[f.onLeft].label}`),
-      row('He goes right, you hold', `${DIR[f.onRight].keys} — ${DIR[f.onRight].label}`),
-      row('He crosses your screen at', `${f.across.toFixed(2)} ups`),
+      row('They go left, you hold', `${DIR[f.onLeft].keys} — ${DIR[f.onLeft].label}`),
+      row('They go right, you hold', `${DIR[f.onRight].keys} — ${DIR[f.onRight].label}`),
+      row('They cross your screen at', `${f.across.toFixed(2)} ups`),
       row('Over a full cycle you travel', f.drift.mag < 0.01 ? 'nowhere' : `${f.drift.mag.toFixed(2)} ups`),
     ));
     if (f.note) detail.appendChild(el('p', { class: 'dim', style: { fontSize: 'var(--step--1)', margin: '0.7rem 0 0' } }, f.note));
@@ -199,7 +199,7 @@ export function formMatrix(node) {
       ),
     ),
     el('div.panel', el('div.panel-head', el('span', 'The one you are pointing at')), el('div.panel-body', detail)),
-    el('p.fig-cap', el('b', 'The number in each cell'), ' is how fast he crosses your screen while you hold that form, in units per second, against his ten. Zero is mirroring. Twenty is anti-mirroring. Everything else is somewhere between.'),
+    el('p.fig-cap', el('b', 'The number in each cell'), ' is how fast the enemy crosses your screen while you hold that form, in units per second, against their own ten. Zero is mirroring. Twenty is anti-mirroring. Everything else is somewhere between.'),
   ));
   show('R/L');
 }
@@ -268,7 +268,7 @@ export function inwardOutward(node) {
     ctx.translate(13, padT + 2); ctx.rotate(-Math.PI / 2);
     ctx.font = MONO(9.5, 500); ctx.fillStyle = alpha(C.scopeInk2, 0.9);
     ctx.textAlign = 'right'; ctx.textBaseline = 'top';
-    ctx.fillText('how far off him, one reaction later', 0, 0);
+    ctx.fillText('how far off them, one reaction later', 0, 0);
     ctx.restore();
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
 
@@ -281,10 +281,10 @@ export function inwardOutward(node) {
   node.appendChild(el('div.lab',
     el('div.lab-main',
       el('div.scope',
-        el('div.scope-head', el('span', 'He has just reversed. Your mouse is frozen.'), el('b', 'measured')),
+        el('div.scope-head', el('span', 'They have just reversed. Your mouse is frozen.'), el('b', 'measured')),
         canvas,
       ),
-      el('p.fig-cap', el('b', 'Every bar is the same experiment.'), ' He changes direction, you hold one key for one reaction time, and nobody touches the mouse. Shorter is better: it is the correction you will owe when you finally notice.'),
+      el('p.fig-cap', el('b', 'Every bar is the same experiment.'), ' The enemy changes direction, you hold one key for one reaction time, and nobody touches the mouse. Shorter is better: it is the correction you will owe when you finally notice.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Conditions')), el('div.panel-body', el('div.controls',
@@ -326,7 +326,7 @@ export function compareForms(node) {
       el('th', 'Across your screen'),
       el('th', 'Directed'),
       el('th', 'You hit'),
-      el('th', 'He hits'),
+      el('th', 'They hit'),
       el('th', 'Trade'),
     )),
     body,

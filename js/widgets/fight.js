@@ -29,7 +29,7 @@ export function biasFigure(node) {
   let style = 'centre';
   const canvas = el('canvas');
   const rFree = readout('Free hits from the middle', { swatch: 'orange' });
-  const rSwept = readout('He has relocated', { unit: '°' });
+  const rSwept = readout('They have relocated', { unit: '°' });
   const rSpan = readout('Angle you must cover', { unit: '°' });
 
   // A short dodge, because the free-hits argument is about ad-spam: the
@@ -46,16 +46,16 @@ export function biasFigure(node) {
 
   const controls = el('div.controls',
     slider({
-      label: 'His bias', min: 0, max: 0.55, step: 0.01, value: 0,
-      format: (v) => (v < 0.03 ? 'none: pure ad-spam' : v < 0.25 ? 'some' : 'strong'),
-      hint: 'How much longer one side of his dodge lasts than the other.',
+      label: 'Their drift', min: 0, max: 0.55, step: 0.01, value: 0,
+      format: (v) => (v < 0.03 ? 'none: dodging on the spot' : v < 0.25 ? 'some' : 'strong'),
+      hint: 'How much longer one side of their dodge lasts than the other.',
       oninput: (v) => { bias = v; reset(); },
     }),
     segmented({
       label: 'What you are doing about it', value: style,
       options: [
         { value: 'centre', label: 'Under-aiming the middle' },
-        { value: 'track', label: 'Tracking him properly' },
+        { value: 'track', label: 'Tracking them properly' },
       ],
       onchange: (v) => { style = v; reset(); },
     }),
@@ -63,8 +63,8 @@ export function biasFigure(node) {
 
   node.appendChild(el('div.lab',
     el('div.lab-main',
-      el('div.scope', el('div.scope-head', el('span', 'His ground track, from above'), el('b', 'bias')), canvas),
-      el('p.fig-cap', el('b', 'Drag the bias to zero'), ' and watch the orange. A dodge that goes nowhere has a middle, and a middle is a place someone can leave a crosshair.'),
+      el('div.scope', el('div.scope-head', el('span', 'Their ground track, from above'), el('b', 'bias')), canvas),
+      el('p.fig-cap', el('b', 'Drag their drift to zero'), ' and watch the orange. A dodge that goes nowhere has a fixed centre, and a fixed centre is a place someone can simply leave a crosshair.'),
     ),
     el('div.lab-side',
       el('div.panel', el('div.panel-head', el('span', 'Controls')), el('div.panel-body', controls)),
@@ -106,7 +106,7 @@ export function biasFigure(node) {
     ctx.fillStyle = C.red;
     ctx.beginPath(); ctx.arc(X(s.him.x), Y(s.him.y), 6, 0, Math.PI * 2); ctx.fill();
     ctx.font = MONO(9.5, 500); ctx.fillStyle = alpha(C.scopeInk2, 0.85);
-    ctx.fillText('thick orange is where your crosshair was on him', 10, h - 10);
+    ctx.fillText('thick orange is where your crosshair was on them', 10, h - 10);
     ctx.fillStyle = alpha(C.blueLit, 0.9); ctx.fillText('YOU', X(s.you.x) - 10, Y(s.you.y) - 12);
 
     const acc = s.shotsYou ? s.hitsYou / s.shotsYou : 0;
@@ -216,12 +216,12 @@ export function formTrade(node) {
           oninput: (v) => { mine = v; run(); },
         }),
         slider({
-          label: 'His mouse control', min: 0.004, max: 0.03, step: 0.001, value: 0.016,
+          label: 'Their mouse control', min: 0.004, max: 0.03, step: 0.001, value: 0.016,
           format: (v) => (v < 0.009 ? 'excellent' : v < 0.016 ? 'good' : v < 0.023 ? 'ordinary' : 'poor'),
           oninput: (v) => { theirs = v; run(); },
         }),
         segmented({
-          label: 'What he does about you', value: hisStyle,
+          label: 'What they do about you', value: hisStyle,
           options: [
             { value: 'track', label: 'Tracks you' },
             { value: 'centre', label: 'Sits on your middle' },
@@ -256,7 +256,7 @@ export function lab(node) {
   const rTrade = versus('time on target');
   const rReact = readout('Your reactivity', { unit: 'ms' });
   const rGap = readout('Worst gap per change', { unit: '°' });
-  const rAcross = readout('He crosses your screen at', { unit: 'ups' });
+  const rAcross = readout('They cross your screen at', { unit: 'ups' });
   const rRange = readout('Range', { unit: 'u' });
 
   const pickerRow = el('div.formpick.compact');
@@ -301,20 +301,20 @@ export function lab(node) {
 
   const controls = el('div.controls',
     segmented({
-      label: 'His dodge', value: dodge,
+      label: 'Their dodge', value: dodge,
       options: [
         { value: 'long', label: 'Long' }, { value: 'medium', label: 'Medium' },
         { value: 'short', label: 'Short' }, { value: 'metronome', label: 'Metronome' },
       ],
       onchange: (v) => { dodge = v; build(); },
     }),
-    slider({ label: 'His bias', min: 0, max: 0.5, step: 0.02, value: 0, format: (v) => (v < 0.03 ? 'none' : v.toFixed(2)), oninput: (v) => { bias = v; fig.sim.setBias(v); } }),
+    slider({ label: 'Their bias', min: 0, max: 0.5, step: 0.02, value: 0, format: (v) => (v < 0.03 ? 'none' : v.toFixed(2)), oninput: (v) => { bias = v; fig.sim.setBias(v); } }),
     slider({ label: 'Range', min: 5, max: 45, step: 1, value: 16, format: (v) => `${v} u`, oninput: (v) => { params.range = v; fig.sim.setParam('range', v); fig.reset(); } }),
     slider({ label: 'Your reaction', min: 100, max: 340, step: 10, value: 200, format: (v) => `${v} ms`, oninput: (v) => { params.react = v / 1000; fig.sim.setParam('react', v / 1000); } }),
     slider({ label: 'Your correction speed', min: 3, max: 20, step: 0.5, value: 9, format: (v) => (v < 6 ? 'smooth' : v < 13 ? 'balanced' : 'snappy'), oninput: (v) => { params.flick = v; fig.sim.setParam('flick', v); } }),
     slider({ label: 'Your mouse control', min: 0.004, max: 0.03, step: 0.001, value: 0.012, format: (v) => (v < 0.009 ? 'excellent' : v < 0.016 ? 'good' : v < 0.023 ? 'ordinary' : 'poor'), oninput: (v) => { params.jitterRate = v; fig.sim.setParam('jitterRate', v); } }),
-    slider({ label: 'His mouse control', min: 0.004, max: 0.03, step: 0.001, value: 0.016, format: (v) => (v < 0.009 ? 'excellent' : v < 0.016 ? 'good' : v < 0.023 ? 'ordinary' : 'poor'), oninput: (v) => { enemy.jitterRate = v; fig.sim.setEnemyParam('jitterRate', v); } }),
-    slider({ label: 'His reaction', min: 100, max: 340, step: 10, value: 200, format: (v) => `${v} ms`, oninput: (v) => { enemy.react = v / 1000; fig.sim.setEnemyParam('react', v / 1000); } }),
+    slider({ label: 'Their mouse control', min: 0.004, max: 0.03, step: 0.001, value: 0.016, format: (v) => (v < 0.009 ? 'excellent' : v < 0.016 ? 'good' : v < 0.023 ? 'ordinary' : 'poor'), oninput: (v) => { enemy.jitterRate = v; fig.sim.setEnemyParam('jitterRate', v); } }),
+    slider({ label: 'Their reaction', min: 100, max: 340, step: 10, value: 200, format: (v) => `${v} ms`, oninput: (v) => { enemy.react = v / 1000; fig.sim.setEnemyParam('react', v / 1000); } }),
   );
 
   build();

@@ -6,7 +6,7 @@
  */
 
 import { $, $$, el } from './ui/dom.js';
-import { hero, reactivityClock, readingDemo, directionWheel } from './widgets/basics.js';
+import { hero, reactivityClock, readingDemo, directionWheel, withAgainst } from './widgets/basics.js';
 import { ruleGame, shortDodge } from './widgets/rule.js';
 import { formExplorer, formMatrix, inwardOutward, compareForms, staticWeakness } from './widgets/formsui.js';
 import { connectionMap, advancedCases } from './widgets/chains.js';
@@ -16,7 +16,7 @@ import { wireTerms } from './ui/teach.js';
 import { BLOCKS, FUNDAMENTAL } from './core/forms.js';
 
 const WIDGETS = {
-  hero, reactivityClock, readingDemo, directionWheel,
+  hero, reactivityClock, readingDemo, directionWheel, withAgainst,
   ruleGame, shortDodge,
   formExplorer, formMatrix, inwardOutward, compareForms, staticWeakness,
   blockExplorer: (n) => formExplorer(n, { list: BLOCKS, start: 'FR/BR' }),

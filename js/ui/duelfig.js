@@ -80,7 +80,7 @@ export function duelFigure(spec = {}) {
     range:       () => readout('Range', { unit: 'u' }),
     gap:         () => readout('Crosshair off by', { unit: '°' }),
     accuracy:    () => readout('Your time on target', { swatch: 'blue' }),
-    hisAccuracy: () => readout('His time on target', { swatch: 'red' }),
+    hisAccuracy: () => readout('Their time on target', { swatch: 'red' }),
     closing:     () => readout('Closing at', { unit: 'ups' }),
   };
   for (const k of wanted) if (defs[k]) rows[k] = defs[k]();
@@ -128,7 +128,7 @@ export function duelFigure(spec = {}) {
     s.hisYaw = yawOf(s.him, s.you);
     if (spec.follow !== false) arena.follow(s, spec.pad ?? 1.5);
     arena.draw(s, { ...(spec.layers || {}) });
-    if (monitor) monitor.draw(s, { pov, hudLeft: pov === 'him' ? "his monitor" : 'your monitor', hudRight: spec.monitorHud ? spec.monitorHud(s) : null, ...(spec.monitorOpts || {}) });
+    if (monitor) monitor.draw(s, { pov, hudLeft: pov === 'him' ? 'their monitor' : 'your monitor', hudRight: spec.monitorHud ? spec.monitorHud(s) : null, ...(spec.monitorOpts || {}) });
     if (traceCanvas) {
       drawMouseTrace(traceCanvas, s.mouseYou, {
         height: 84, window: 3.2, label: 'your mouse, last 3 seconds',

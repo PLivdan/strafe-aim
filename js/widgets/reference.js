@@ -138,7 +138,7 @@ export function scoring(node) {
     {
       name: 'Distance travelled',
       how: 'Points for ground covered, whichever way you go.',
-      pays: 'Long dodging: keep going through his change of direction. That is a real and useful movement form, but it is the opposite of strafe aiming.',
+      pays: 'Long dodging: keep going through the bot\u2019s change of direction. That is a real and useful movement form, but it is the opposite of strafe aiming.',
       cheese: 'Hold back and forth. Full marks, no learning.',
       verdict: 'bad',
     },
@@ -153,7 +153,7 @@ export function scoring(node) {
       name: 'Conditional movement',
       how: 'Points only for following a prescription: this key while the bot goes left, that key while it goes right.',
       pays: 'Exactly the form you set out to train, and nothing else.',
-      cheese: 'None available, which is the point. Award nothing for the first 200 ms after his change and prediction stops paying too.',
+      cheese: 'None available, which is the point. Award nothing for the first 200 ms after the bot\u2019s change and prediction stops paying too.',
       verdict: 'good',
     },
   ];
@@ -175,8 +175,8 @@ export function glossary(node) {
     ['Precision reading', 'how finely you see', 'How exactly you can tell where the crosshair sits relative to the body.'],
     ['Fast-strafes reading', 'how often you see', 'How quickly you refresh that judgement. A continuous reaction time. When it is poor the scene stays blurry long after your click-test says it should not.'],
     ['Movement reading', 'what a change means', 'Knowing how much mouse a given change of direction demands, given how both of you are moving. This is the one the whole guide trains.'],
-    ['Reactive part', 'noticing', 'From his change of direction to your realising it. Nothing you press changes it much.'],
-    ['Correcting part', 'the flick back', 'From realising to being back on him. Its size is set by how far off you got, which is set by what you pressed.'],
+    ['Reactive part', 'noticing', 'From the enemy\u2019s change of direction to your realising it. Nothing you press changes it much.'],
+    ['Correcting part', 'the flick back', 'From realising to being back on them. Its size is set by how far off you got, which is set by what you pressed.'],
     ['Short dodge', 'ad-spam', 'Reversing faster than anyone can answer. Unbeatable by strafe aiming and easy to punish by waiting in the middle. Fine as a fake, awful as a habit.'],
     ['Rhombus', 'the closed shape', 'What a chain of four quarter turns draws on the ground. In games where the diagonals are slower it is a rhombus rather than a square.'],
   ];
@@ -236,7 +236,7 @@ export function exactNumbers(node) {
     ['Anti-mirroring', '10 + 10', EXACT.antiMirror],
   ];
   node.appendChild(el('div.panel',
-    el('div.panel-head', el('span', 'How fast he crosses your screen'), el('span', 'his 10 ups, plus or minus yours')),
+    el('div.panel-head', el('span', 'How fast they cross your screen'), el('span', 'their 10 ups, plus or minus yours')),
     el('div.panel-body', el('div.scroll-x', el('table.data',
       el('thead', el('tr', el('th', 'Form'), el('th', 'Across the sight line'), el('th', 'ups'), el('th', 'At 16 units, °/s'), el('th', 'Mousepad at 30 cm/360'))),
       el('tbody', rows.map(([name, expr, v]) => el('tr',
