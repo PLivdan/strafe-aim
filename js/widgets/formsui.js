@@ -53,7 +53,7 @@ export function formExplorer(node, opts = {}) {
     return el('button', {
       type: 'button', 'aria-pressed': String(fid === id), 'data-form': fid,
       onclick: () => select(fid),
-      title: `${ff.name} — ${ff.across.toFixed(2)} ups across your screen`,
+      title: `${ff.name}: ${ff.across.toFixed(2)} ups across your screen`,
     },
       el('b', ff.name),
       el('span', ff.variant ? ff.variant : `${DIR[ff.onLeft].keys} / ${DIR[ff.onRight].keys}`),
@@ -182,8 +182,8 @@ export function formMatrix(node) {
       f.tier !== 'other' ? el('span', { class: 'tag' }, f.tier) : null,
     ));
     detail.appendChild(el('div.readouts',
-      row('They go left, you hold', `${DIR[f.onLeft].keys} — ${DIR[f.onLeft].label}`),
-      row('They go right, you hold', `${DIR[f.onRight].keys} — ${DIR[f.onRight].label}`),
+      row('They go left, you hold', `${DIR[f.onLeft].keys} · ${DIR[f.onLeft].label}`),
+      row('They go right, you hold', `${DIR[f.onRight].keys} · ${DIR[f.onRight].label}`),
       row('They cross your screen at', `${f.across.toFixed(2)} ups`),
       row('Over a full cycle you travel', f.drift.mag < 0.01 ? 'nowhere' : `${f.drift.mag.toFixed(2)} ups`),
     ));
@@ -273,8 +273,8 @@ export function inwardOutward(node) {
     ctx.textAlign = 'left'; ctx.textBaseline = 'alphabetic';
 
     const sorted = [...data].sort((a, b) => a.gap - b.gap);
-    rBest.set(`${DIR[sorted[0].key].keys} — ${sorted[0].gap.toFixed(1)}°`);
-    rWorst.set(`${DIR[sorted[sorted.length - 1].key].keys} — ${sorted[sorted.length - 1].gap.toFixed(1)}°`);
+    rBest.set(`${DIR[sorted[0].key].keys} · ${sorted[0].gap.toFixed(1)}°`);
+    rWorst.set(`${DIR[sorted[sorted.length - 1].key].keys} · ${sorted[sorted.length - 1].gap.toFixed(1)}°`);
     rSpread.set((sorted[sorted.length - 1].gap - sorted[0].gap).toFixed(1), '°');
   }
 

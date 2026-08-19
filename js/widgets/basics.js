@@ -474,7 +474,7 @@ export function withAgainst(node) {
       )),
       el('div.panel', el('div.panel-head', el('span', 'Watch one number')), el('div.panel-body',
         el('p', { style: { fontSize: 'var(--step--1)', margin: 0 } },
-          el('strong', 'How fast they cross your screen.'), ' Ignore accuracy for now. Switch between the two choices a few times and watch what happens to that speed — and to the red smear on the monitor.'),
+          el('strong', 'How fast they cross your screen.'), ' Ignore accuracy for now. Switch between the two choices a few times and watch what happens to that speed, and to the red smear on the monitor.'),
       )),
     ),
   ));

@@ -203,7 +203,7 @@ export function advancedCases(node) {
       why: [
         'Go backward as they go right. At close range that opens the angle to their left enormously, and their crosshair falls behind you.',
         'A crosshair that is behind wants help from movement, so they change direction to your left to bring the relative speed up.',
-        'The moment they do, you push forward-right — towards them and to their left. Because you are closing the range, their own change of direction now works against them and for you.',
+        'The moment they do, you push forward-right, towards them and to their left. Because you are closing the range, their own change of direction now works against them and for you.',
       ],
       close: 'They turn their mouse a long way. You barely turn yours. They chose the change of direction and it still cost them.',
     },
@@ -222,8 +222,8 @@ export function advancedCases(node) {
       when: 'You need to be somewhere else, and you would rather not be free damage on the way.',
       why: [
         'While they go right you go backward, so their mouse is tracking a ten-unit sweep to the left.',
-        'When they reverse, you go right — towards their left. They have to flick left and stop the flick exactly on you, because from that moment you are mirroring them and the target is not moving.',
-        'A flick that has to stop exactly is the flick people miss. When they miss, they will change direction to get the mouse moving again — and so should you.',
+        'When they reverse, you go right, towards their left. They have to flick left and stop the flick exactly on you, because from that moment you are mirroring them and the target is not moving.',
+        'A flick that has to stop exactly is the flick people miss. When they miss, they will change direction to get the mouse moving again, and so should you.',
       ],
       close: 'This is a repositioning form that happens to be inward-directed. Use it to go somewhere, not to stand still.',
     },

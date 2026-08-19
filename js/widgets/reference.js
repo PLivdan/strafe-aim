@@ -26,7 +26,7 @@ export function routines(node) {
       warmup: 'Bind the aimbot to your fire key and load Horizontal Bounce Dodge in free play. Change direction in time with the bot and try every fundamental form. The aimbot has perfect mouse control, so it shows you exactly what the mouse should do for each one.',
       items: [
         { name: 'Pole Long Dodge', mins: 5, why: 'Learn to correct through a change of direction and to live with the acceleration. Take the left-right changes, then the diagonal ones. Play with the range, circle the bot, see what happens.' },
-        { name: 'Horizontal Bounce Dodge', alt: 'Vertical Bounce Dodge', mins: 5, why: 'Anti-mirroring and both half-sideways forms. On the vertical version, change direction at every bounce — that is a change of direction even though it is vertical — and at least once in between.' },
+        { name: 'Horizontal Bounce Dodge', alt: 'Vertical Bounce Dodge', mins: 5, why: 'Anti-mirroring and both half-sideways forms. On the vertical version, change direction at every bounce (a bounce is a change of direction, even though it is vertical) and at least once in between.' },
         { name: 'Rhombus Dodge', mins: 10, why: 'Fundamental forms, going for score. Try different angles of the rhombus and watch what each one does to the relative speed.' },
         { name: 'Rhombus Vertical Dodge', alt: 'XY Tracking Dodge', mins: 10, why: 'Fundamental forms again, at different ranges. You will press forward as the bot rises and backward as it falls; make yourself invert that too.' },
         { name: 'Close LS Easy Dodge', alt: 'Close FS Easy Dodge', mins: 10, why: 'Everything so far, for score.' },
@@ -198,8 +198,8 @@ export function disagreements(node) {
     {
       claim: 'The two advanced forms are called 45-forms.',
       guide: 'Section 3.2 calls back-to-forward-hsw and forward-hsw-to-mirroring "45-strafe aim forms (hence triangles)".',
-      ours: 'Measured as the guide defines the classification — "the angle made by your change of direction" — both are 135°. Forward-right to backward is a 135° turn. The 45° is the corner of the triangle the shape draws, which is 180° minus the turn.',
-      why: 'Both readings are useful and they are not the same number. This site classifies by the turn throughout, because that is the number that predicts the relative speed and the classification into inward and outward. The census on the matrix — 8 at 180°, 16 each at 135°, 90° and 45° — only comes out to 56 under that reading.',
+      ours: 'Measured as the guide defines the classification, the angle made by your change of direction, both are 135°. Forward-right to backward is a 135° turn. The 45° is the corner of the triangle the shape draws, which is 180° minus the turn.',
+      why: 'Both readings are useful and they are not the same number. This site classifies by the turn throughout, because that is the number that predicts the relative speed and the classification into inward and outward. The census on the matrix, 8 at 180° and 16 each at 135°, 90° and 45°, only comes out to 56 under that reading.',
     },
     {
       claim: 'Back and forth is a mixed form.',
