@@ -474,7 +474,7 @@ export function withAgainst(node) {
       el('div.panel', el('div.panel-head', el('span', 'Your choice')), el('div.panel-body',
         seg,
         el('p', { class: 'dim', style: { fontSize: 'var(--step--1)', margin: '0.8rem 0 0' } },
-          'The enemy dodges left and right on their own. You only decide one thing: when they move, do you travel the same way through the world, or the opposite way?'),
+          'The enemy dodges left and right on their own. You only decide one thing: when they move, do you move in the same world direction, or the opposite one?'),
       )),
       el('div.panel', el('div.panel-head', el('span', 'Watch one number')), el('div.panel-body',
         el('p', { style: { fontSize: 'var(--step--1)', margin: 0 } },

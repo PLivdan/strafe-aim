@@ -997,3 +997,17 @@ table.matrix td.on { box-shadow: 0 0 0 2px var(--ink); }
   .plate > .stack { position: sticky; top: 3.4rem; }
   .masthead .plate > .stack { position: static; }
 }
+
+/* ── card grids that must not rag ─────────────────────────────────────── */
+/* Six equal cards in .cols-2 auto-fit four columns on a wide screen and
+   leave a 4+2 rag with two empty tracks. A 24rem minimum caps the row at
+   three, so six cards always land 3+3, 2+2+2, or single file. */
+.form-cards, .trio {
+  display: grid;
+  gap: var(--gap);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 24rem), 1fr));
+  align-items: start;
+}
+
+/* Long section subheadings rag badly on the last word. */
+.h-sub { text-wrap: balance; }

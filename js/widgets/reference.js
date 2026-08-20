@@ -197,7 +197,7 @@ export function disagreements(node) {
   const ITEMS = [
     {
       claim: 'The two advanced forms are called 45-forms.',
-      guide: 'Section 3.2 calls back-to-forward-hsw and forward-hsw-to-mirroring "45-strafe aim forms (hence triangles)".',
+      guide: 'Section 3.2 calls back-to-forward-hsw and forward-hsw-to-mirroring \u201c45-strafe aim forms (hence triangles)\u201d.',
       ours: 'Measured as the guide defines the classification, the angle made by your change of direction, both are 135°. Forward-right to backward is a 135° turn. The 45° is the corner of the triangle the shape draws, which is 180° minus the turn.',
       why: 'Both readings are useful and they are not the same number. This site classifies by the turn throughout, because that is the number that predicts the relative speed and the classification into inward and outward. The census on the matrix, 8 at 180° and 16 each at 135°, 90° and 45°, only comes out to 56 under that reading.',
     },
@@ -211,12 +211,12 @@ export function disagreements(node) {
       claim: 'Mirroring means neither of you needs to move the mouse.',
       guide: 'Section 2.3, and it is exactly right about the steady state.',
       ours: 'The simulation puts mirroring at a hundred per cent time on target for both players, which is the strongest agreement anywhere on this page. But it gets there with a nonzero mouse: through each change of direction the relative speed rises to twenty and falls back, and the crosshair has to ride that.',
-      why: 'Nothing turns on it. It is only worth flagging because "you do not have to move your mouse" is the sentence people quote, and the thing they then fail to do is the small movement in between.',
+      why: 'Nothing turns on it. It is only worth flagging because \u201cyou do not have to move your mouse\u201d is the sentence people quote, and the thing they then fail to do is the small movement in between.',
     },
   ];
 
-  node.appendChild(el('div.stack', ITEMS.map((it) => el('div.panel',
-    el('div.panel-head', el('span', 'Where the arithmetic and the prose differ')),
+  node.appendChild(el('div.trio', ITEMS.map((it) => el('div.panel',
+    el('div.panel-head', el('span', it.claim)),
     el('div.panel-body',
       el('p', el('strong', 'The guide says. '), it.guide),
       el('p', el('strong', 'This site measures. '), it.ours),

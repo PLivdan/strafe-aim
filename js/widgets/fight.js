@@ -188,10 +188,9 @@ export function formTrade(node) {
     lastOut = out;
     draw(out);
     const sorted = [...out].sort((a, b) => (b.you - b.him) - (a.you - a.him));
-    const short = (n) => n.replace('Half-sideways', 'Hsw').replace('Anti-mirroring', 'Anti-mirror');
-    rBest.set(`${short(sorted[0].f.name)} +${Math.round((sorted[0].you - sorted[0].him) * 100)}`);
+    rBest.set(`${sorted[0].f.name} +${Math.round((sorted[0].you - sorted[0].him) * 100)}`);
     const last = sorted[sorted.length - 1];
-    rWorst.set(`${short(last.f.name)} ${Math.round((last.you - last.him) * 100)}`);
+    rWorst.set(`${last.f.name} ${Math.round((last.you - last.him) * 100)}`);
     status.textContent = 'Bars to the right show a modeled time-on-target advantage for you; bars to the left favor the opponent. This is not a prediction of who wins a real match.';
   }
 
